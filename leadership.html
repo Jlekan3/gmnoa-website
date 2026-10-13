@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="/assets/images/Asset%202.svg">
+    <title>GMNOA Leadership</title>
+    <meta
+        name="description"
+        content="View the full leadership team of the Ghana Merchant Navy Officers' Association."
+    >
+    <link rel="canonical" href="https://gmnoa.org/leadership.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="GMNOA Leadership">
+    <meta property="og:description" content="View the full leadership team of the Ghana Merchant Navy Officers' Association.">
+    <meta property="og:url" content="https://gmnoa.org/leadership.html">
+    <meta property="og:image" content="https://gmnoa.org/assets/images/Asset%202.svg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap"
+        rel="stylesheet"
+    >
+    <style>
+        :root {
+            --blue: #0096ff;
+            --navy: #061b2d;
+            --text: #18364d;
+            --muted: #718697;
+            --border: #dcecf7;
+            --light: #f7fbff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: "DM Sans", sans-serif;
+            color: var(--text);
+            background: var(--light);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: rgba(255,255,255,.94);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(16px);
+        }
+
+        .container {
+            width: min(1120px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        .nav {
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: "Manrope", sans-serif;
+            color: var(--navy);
+            font-weight: 800;
+        }
+
+        .brand img {
+            width: 38px;
+            height: 38px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .back {
+            color: var(--blue);
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        main {
+            padding: 58px 0 80px;
+        }
+
+        .page-header {
+            max-width: 860px;
+            margin: 0 auto 34px;
+        }
+
+        .meta {
+            color: var(--blue);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            max-width: 820px;
+            margin-top: 14px;
+            color: var(--navy);
+            font-family: "Manrope", sans-serif;
+            font-size: clamp(34px, 6vw, 58px);
+            line-height: 1.04;
+        }
+
+        .intro {
+            margin-top: 18px;
+            color: var(--muted);
+            font-size: 18px;
+            line-height: 1.75;
+        }
+
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .leader-card {
+            min-width: 0;
+            overflow: hidden;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            box-shadow: 0 18px 44px rgba(6, 27, 45, .08);
+        }
+
+        .leader-image {
+            width: 100%;
+            aspect-ratio: 4 / 4.4;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+            background: #e9f4fb;
+        }
+
+        .leader-body {
+            padding: 24px;
+        }
+
+        .leader-role {
+            color: var(--blue);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+
+        .leader-name {
+            margin-top: 10px;
+            color: var(--navy);
+            font-family: "Manrope", sans-serif;
+            font-size: 24px;
+            line-height: 1.18;
+        }
+
+        .leader-body p {
+            margin-top: 12px;
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .leader-email {
+            display: inline-flex;
+            margin-top: 18px;
+            color: var(--blue);
+            font-size: 14px;
+            font-weight: 800;
+            overflow-wrap: anywhere;
+        }
+
+        .empty {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 50px;
+            text-align: center;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+
+        @media (max-width: 900px) {
+            .leadership-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                width: min(100% - 28px, 1120px);
+            }
+
+            .leadership-grid {
+                grid-template-columns: 1fr;
+            }
+
+            main {
+                padding-top: 38px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="topbar">
+        <div class="container nav">
+            <a class="brand" href="index.html">
+                <img src="/assets/images/Asset%202.svg" alt="GMNOA logo">
+                <span>GMNOA</span>
+            </a>
+            <a class="back" href="index.html#leadership">Back to leadership</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="page-header">
+            <div class="meta">Leadership</div>
+            <h1>All leadership members</h1>
+            <p class="intro">
+                Browse the full active leadership team of the Ghana Merchant Navy Officers' Association.
+            </p>
+        </section>
+
+        <section class="leadership-grid" id="leadershipGrid">
+            <div class="empty">
+                <div class="meta">Loading</div>
+                <h1>Loading leaders...</h1>
+                <p class="intro">Please wait while the leadership team loads.</p>
+            </div>
+        </section>
+    </main>
+
+    <script type="module">
+        import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+
+        const SUPABASE_URL = "https://lnctolzzigpsjsvhtxwe.supabase.co";
+        const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_O_JT8-AD_heentaVPRdXEQ_x9zCoDtt";
+        const supabaseClient = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+        const fallbackImage = "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=85";
+        const storageBucket = "gmnoa-images";
+
+        loadLeaders();
+
+        async function loadLeaders() {
+            const { data, error } = await supabaseClient
+                .from("team_members")
+                .select("full_name, position, bio, image_url, email, display_order, is_active, created_at")
+                .eq("is_active", true)
+                .order("display_order", {
+                    ascending: true,
+                    nullsFirst: false
+                })
+                .order("created_at", {
+                    ascending: false
+                });
+
+            if (error) {
+                renderEmpty("Leadership profiles are not available right now.");
+                return;
+            }
+
+            if (!data?.length) {
+                renderEmpty("No leadership profiles have been published yet.");
+                return;
+            }
+
+            const leaders = await Promise.all(data.map(resolveLeaderImage));
+            document.getElementById("leadershipGrid").innerHTML =
+                leaders.map(renderLeaderCard).join("");
+        }
+
+        function renderLeaderCard(leader) {
+            return `
+                <article class="leader-card">
+                    <img
+                        class="leader-image"
+                        src="${escapeHTML(leaderImageUrl(leader))}"
+                        alt="${escapeHTML(leader.full_name || "GMNOA leader")}"
+                    >
+                    <div class="leader-body">
+                        <div class="leader-role">
+                            ${escapeHTML(leader.position || "Leadership")}
+                        </div>
+                        <h2 class="leader-name">
+                            ${escapeHTML(leader.full_name || "Leadership Profile")}
+                        </h2>
+                        <p>
+                            ${escapeHTML(leader.bio || "Official GMNOA leadership profile.")}
+                        </p>
+                        ${
+                            leader.email
+                                ? `<a class="leader-email" href="mailto:${escapeHTML(leader.email)}">${escapeHTML(leader.email)}</a>`
+                                : ""
+                        }
+                    </div>
+                </article>
+            `;
+        }
+
+        function renderEmpty(message) {
+            document.getElementById("leadershipGrid").innerHTML = `
+                <div class="empty">
+                    <h1>${escapeHTML(message)}</h1>
+                    <p class="intro">Return to the homepage leadership section.</p>
+                </div>
+            `;
+        }
+
+        function leaderImageUrl(leader) {
+            return leader.resolved_leader_image_url ||
+                leader.image_url ||
+                fallbackImage;
+        }
+
+        async function resolveLeaderImage(leader) {
+            return {
+                ...leader,
+                resolved_leader_image_url: await resolveStorageImageUrl(
+                    leader.image_url
+                )
+            };
+        }
+
+        async function resolveStorageImageUrl(url) {
+            const storagePath = storagePathFromImageUrl(url);
+
+            if (!storagePath) {
+                return url || fallbackImage;
+            }
+
+            const { data, error } = await supabaseClient
+                .storage
+                .from(storageBucket)
+                .createSignedUrl(storagePath, 60 * 60);
+
+            if (error || !data?.signedUrl) {
+                return url || fallbackImage;
+            }
+
+            return data.signedUrl;
+        }
+
+        function storagePathFromImageUrl(url) {
+            if (!url) {
+                return "";
+            }
+
+            const value = String(url).trim();
+
+            if (
+                value.startsWith("leaders/") ||
+                value.startsWith("site/") ||
+                value.startsWith("events/") ||
+                value.startsWith("blogs/")
+            ) {
+                return value;
+            }
+
+            try {
+                const parsed = new URL(value);
+                const markers = [
+                    `/storage/v1/object/public/${storageBucket}/`,
+                    `/storage/v1/object/sign/${storageBucket}/`,
+                    `/storage/v1/object/${storageBucket}/`
+                ];
+
+                for (const marker of markers) {
+                    const index = parsed.pathname.indexOf(marker);
+
+                    if (index !== -1) {
+                        return decodeURIComponent(
+                            parsed.pathname.slice(index + marker.length)
+                        );
+                    }
+                }
+            }
+
+            catch {
+                return "";
+            }
+
+            return "";
+        }
+
+        function escapeHTML(value) {
+            return String(value ?? "").replace(/[&<>"']/g, char => ({
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&#039;"
+            }[char]));
+        }
+    </script>
+    <script type="module" src="/src/js/no-download.js"></script>
+</body>
+</html>

@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="/assets/images/Asset%202.svg">
+    <title>GMNOA Events</title>
+    <meta name="description" content="View all events from the Ghana Merchant Navy Officers' Association.">
+    <link rel="canonical" href="https://gmnoa.org/events.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="GMNOA Events">
+    <meta property="og:description" content="View all events from the Ghana Merchant Navy Officers' Association.">
+    <meta property="og:url" content="https://gmnoa.org/events.html">
+    <meta property="og:image" content="https://gmnoa.org/assets/images/Asset%202.svg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue: #0096ff;
+            --navy: #061b2d;
+            --text: #18364d;
+            --muted: #718697;
+            --border: #dcecf7;
+            --light: #f7fbff;
+            --yellow: #fedd02;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: "DM Sans", sans-serif;
+            color: var(--text);
+            background: var(--light);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: rgba(255,255,255,.94);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(16px);
+        }
+
+        .container {
+            width: min(1120px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        .nav {
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--navy);
+            font-family: "Manrope", sans-serif;
+            font-weight: 800;
+        }
+
+        .brand img {
+            width: 38px;
+            height: 38px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .back {
+            color: var(--blue);
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        main {
+            padding: 58px 0 80px;
+        }
+
+        .page-header {
+            max-width: 860px;
+            margin: 0 auto 34px;
+        }
+
+        .meta,
+        .event-date {
+            color: var(--blue);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            max-width: 820px;
+            margin-top: 14px;
+            color: var(--navy);
+            font-family: "Manrope", sans-serif;
+            font-size: clamp(34px, 6vw, 58px);
+            line-height: 1.04;
+        }
+
+        .intro {
+            margin-top: 18px;
+            color: var(--muted);
+            font-size: 18px;
+            line-height: 1.75;
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .event-card {
+            min-width: 0;
+            overflow: hidden;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            box-shadow: 0 18px 44px rgba(6, 27, 45, .08);
+        }
+
+        .event-image {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            object-fit: cover;
+            display: block;
+            background: #e9f4fb;
+        }
+
+        .event-body {
+            padding: 24px;
+        }
+
+        .event-body h2 {
+            margin-top: 12px;
+            color: var(--navy);
+            font-family: "Manrope", sans-serif;
+            font-size: 24px;
+            line-height: 1.18;
+        }
+
+        .event-body p {
+            margin-top: 12px;
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .event-link,
+        .event-register-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 18px;
+            min-height: 42px;
+            padding: 0 16px;
+            border: 0;
+            border-radius: 8px;
+            background: var(--blue);
+            color: white;
+            font: inherit;
+            font-size: 14px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .event-register-link {
+            background: var(--yellow);
+            color: var(--navy);
+        }
+
+        .event-detail-row {
+            margin-top: 16px;
+            color: var(--text);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .event-detail-label {
+            display: block;
+            margin-bottom: 4px;
+            color: var(--blue);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
+
+        .event-modal-backdrop {
+            position: fixed;
+            inset: 0;
+            z-index: 50;
+            display: grid;
+            place-items: center;
+            padding: 24px;
+            background: rgba(3, 18, 31, .72);
+        }
+
+        .event-modal-backdrop[hidden] {
+            display: none;
+        }
+
+        .event-modal-card {
+            position: relative;
+            width: min(820px, 100%);
+            max-height: min(88vh, 900px);
+            overflow-y: auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 26px 80px rgba(0,0,0,.24);
+        }
+
+        .event-modal-image {
+            width: 100%;
+            aspect-ratio: 16 / 8;
+            object-fit: cover;
+            display: block;
+            background: #e9f4fb;
+        }
+
+        .event-modal-body {
+            padding: clamp(28px, 5vw, 46px);
+        }
+
+        .event-modal-body h3 {
+            margin-top: 12px;
+            color: var(--navy);
+            font-family: "Manrope", sans-serif;
+            font-size: clamp(28px, 4vw, 42px);
+            line-height: 1.08;
+        }
+
+        .event-modal-close {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            width: 40px;
+            height: 40px;
+            border: 0;
+            border-radius: 50%;
+            background: white;
+            color: var(--navy);
+            font-size: 26px;
+            cursor: pointer;
+        }
+
+        .empty {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 50px;
+            text-align: center;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+
+        @media (max-width: 900px) {
+            .events-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                width: min(100% - 28px, 1120px);
+            }
+
+            .events-grid {
+                grid-template-columns: 1fr;
+            }
+
+            main {
+                padding-top: 38px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="topbar">
+        <div class="container nav">
+            <a class="brand" href="index.html">
+                <img src="/assets/images/Asset%202.svg" alt="GMNOA logo">
+                <span>GMNOA</span>
+            </a>
+            <a class="back" href="index.html#events">Back to events</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="page-header">
+            <div class="meta">Events</div>
+            <h1>All events</h1>
+            <p class="intro">
+                Browse every published GMNOA event, programme, and professional engagement.
+            </p>
+        </section>
+
+        <section class="events-grid" id="eventsGrid">
+            <div class="empty">
+                <div class="meta">Loading</div>
+                <h1>Loading events...</h1>
+                <p class="intro">Please wait while the events load.</p>
+            </div>
+        </section>
+    </main>
+
+    <script type="module">
+        import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+
+        const SUPABASE_URL = "https://lnctolzzigpsjsvhtxwe.supabase.co";
+        const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_O_JT8-AD_heentaVPRdXEQ_x9zCoDtt";
+        const supabaseClient = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+        const fallbackImage = "https://images.unsplash.com/photo-1494412651409-8963ce7935a7?auto=format&fit=crop&w=1200&q=85";
+        const storageBucket = "gmnoa-images";
+        let publicEvents = [];
+
+        loadEvents();
+
+        async function loadEvents() {
+            const { data, error } = await supabaseClient
+                .from("events")
+                .select("*")
+                .in("status", ["upcoming", "ongoing", "completed"])
+                .order("event_date", { ascending: true })
+                .order("created_at", { ascending: false });
+
+            if (error) {
+                renderEmpty("Events are not available right now.");
+                return;
+            }
+
+            if (!data?.length) {
+                renderEmpty("No events have been published yet.");
+                return;
+            }
+
+            publicEvents = await Promise.all(data.map(resolveEventImage));
+            document.getElementById("eventsGrid").innerHTML =
+                publicEvents.map(renderEventCard).join("");
+            bindEventDetailButtons();
+        }
+
+        function renderEventCard(event, index) {
+            return `
+                <article class="event-card">
+                    <img class="event-image" src="${escapeHTML(eventImageUrl(event))}" alt="${escapeHTML(event.title || "GMNOA event")}">
+                    <div class="event-body">
+                        <div class="event-date">${escapeHTML(formatDate(event.event_date))}</div>
+                        <h2>${escapeHTML(event.title || "GMNOA Event")}</h2>
+                        <p>${escapeHTML(event.description || event.location || "GMNOA event details will be shared here.")}</p>
+                        <button type="button" class="event-link" data-event-modal-trigger="${index}">
+                            View full details
+                        </button>
+                    </div>
+                </article>
+            `;
+        }
+
+        function bindEventDetailButtons() {
+            document.querySelectorAll("[data-event-modal-trigger]").forEach(button => {
+                button.addEventListener("click", () => {
+                    openEventDetailsModal(publicEvents[Number(button.dataset.eventModalTrigger)]);
+                });
+            });
+        }
+
+        function openEventDetailsModal(event) {
+            if (!event) {
+                return;
+            }
+
+            const modal = ensureEventDetailsModal();
+            const details = event.content || event.description || "Full event details will be shared soon.";
+            const hasRegistration = Boolean(safeHref(event.registration_link, ""));
+
+            modal.querySelector("[data-event-modal-content]").innerHTML = `
+                <article class="event-modal-card" role="dialog" aria-modal="true" aria-labelledby="eventModalTitle">
+                    <button type="button" class="event-modal-close" data-event-modal-close aria-label="Close event details">&times;</button>
+                    <img class="event-modal-image" src="${escapeHTML(eventImageUrl(event))}" alt="${escapeHTML(event.title || "GMNOA event")}">
+                    <div class="event-modal-body">
+                        <div class="event-date">${escapeHTML(formatDate(event.event_date))}</div>
+                        <h3 id="eventModalTitle">${escapeHTML(event.title || "GMNOA Event")}</h3>
+                        <div class="event-detail-row">
+                            <span class="event-detail-label">Date</span>
+                            ${escapeHTML(formatDate(event.event_date))}
+                            ${event.end_date ? ` - ${escapeHTML(formatDate(event.end_date))}` : ""}
+                        </div>
+                        ${event.location ? `<div class="event-detail-row">
+                            <span class="event-detail-label">Location</span>
+                            ${escapeHTML(event.location)}
+                        </div>` : ""}
+                        <div class="event-detail-row">
+                            <span class="event-detail-label">Details</span>
+                            ${escapeHTML(details)}
+                        </div>
+                        ${hasRegistration ? `<a class="event-register-link" href="${escapeHTML(safeHref(event.registration_link, "events.html"))}" target="_blank" rel="noopener">
+                            Registration link
+                        </a>` : ""}
+                    </div>
+                </article>
+            `;
+
+            modal.hidden = false;
+            document.body.style.overflow = "hidden";
+            modal.querySelector("[data-event-modal-close]")?.focus();
+        }
+
+        function ensureEventDetailsModal() {
+            let modal = document.getElementById("eventDetailsModal");
+
+            if (modal) {
+                return modal;
+            }
+
+            modal = document.createElement("div");
+            modal.id = "eventDetailsModal";
+            modal.className = "event-modal-backdrop";
+            modal.hidden = true;
+            modal.innerHTML = `<div data-event-modal-content></div>`;
+            document.body.appendChild(modal);
+
+            modal.addEventListener("click", event => {
+                if (event.target === modal || event.target.closest("[data-event-modal-close]")) {
+                    closeEventDetailsModal();
+                }
+            });
+
+            document.addEventListener("keydown", event => {
+                if (event.key === "Escape" && !modal.hidden) {
+                    closeEventDetailsModal();
+                }
+            });
+
+            return modal;
+        }
+
+        function closeEventDetailsModal() {
+            const modal = document.getElementById("eventDetailsModal");
+
+            if (!modal) {
+                return;
+            }
+
+            modal.hidden = true;
+            document.body.style.overflow = "";
+        }
+
+        function renderEmpty(message) {
+            document.getElementById("eventsGrid").innerHTML = `
+                <div class="empty">
+                    <h1>${escapeHTML(message)}</h1>
+                    <p class="intro">Return to the homepage events section.</p>
+                </div>
+            `;
+        }
+
+        function eventImageUrl(event) {
+            return event.resolved_event_image_url || event.image_url || fallbackImage;
+        }
+
+        async function resolveEventImage(event) {
+            return {
+                ...event,
+                resolved_event_image_url: await resolveStorageImageUrl(event.image_url)
+            };
+        }
+
+        async function resolveStorageImageUrl(url) {
+            const storagePath = storagePathFromImageUrl(url);
+
+            if (!storagePath) {
+                return url || fallbackImage;
+            }
+
+            const { data, error } = await supabaseClient
+                .storage
+                .from(storageBucket)
+                .createSignedUrl(storagePath, 60 * 60);
+
+            if (error || !data?.signedUrl) {
+                return url || fallbackImage;
+            }
+
+            return data.signedUrl;
+        }
+
+        function storagePathFromImageUrl(url) {
+            if (!url) {
+                return "";
+            }
+
+            const value = String(url).trim();
+
+            if (
+                value.startsWith("events/") ||
+                value.startsWith("site/") ||
+                value.startsWith("blogs/") ||
+                value.startsWith("leaders/")
+            ) {
+                return value;
+            }
+
+            try {
+                const parsed = new URL(value);
+                const markers = [
+                    `/storage/v1/object/public/${storageBucket}/`,
+                    `/storage/v1/object/sign/${storageBucket}/`,
+                    `/storage/v1/object/${storageBucket}/`
+                ];
+
+                for (const marker of markers) {
+                    const index = parsed.pathname.indexOf(marker);
+
+                    if (index !== -1) {
+                        return decodeURIComponent(parsed.pathname.slice(index + marker.length));
+                    }
+                }
+            }
+
+            catch {
+                return "";
+            }
+
+            return "";
+        }
+
+        function safeHref(value, fallback = "#") {
+            const url = String(value || "").trim();
+
+            if (!url) {
+                return fallback;
+            }
+
+            if (url.startsWith("#") || url.startsWith("/") || url.startsWith("mailto:") || url.startsWith("tel:")) {
+                return url;
+            }
+
+            try {
+                const parsed = new URL(url);
+                return ["http:", "https:"].includes(parsed.protocol) ? url : fallback;
+            }
+
+            catch {
+                return fallback;
+            }
+        }
+
+        function escapeHTML(value) {
+            return String(value ?? "").replace(/[&<>"']/g, char => ({
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&#039;"
+            }[char]));
+        }
+
+        function formatDate(value) {
+            if (!value) {
+                return "GMNOA Event";
+            }
+
+            const date = new Date(value);
+
+            if (Number.isNaN(date.getTime())) {
+                return "GMNOA Event";
+            }
+
+            return date.toLocaleDateString("en-GH", {
+                year: "numeric",
+                month: "short",
+                day: "numeric"
+            });
+        }
+    </script>
+    <script type="module" src="/src/js/no-download.js"></script>
+</body>
+</html>

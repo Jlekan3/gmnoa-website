@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="/assets/images/Asset%202.svg">
+
+    <title>GMNOA — Admin Login</title>
+
+    <meta
+        name="description"
+        content="Secure administration portal for the Ghana Merchant Navy Officers' Association."
+    >
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        /* =========================================================
+           ROOT
+        ========================================================= */
+
+        :root {
+            --white: #ffffff;
+
+            --blue: #0096ff;
+            --blue-dark: #007bd1;
+
+            --gold: #ffbf55;
+            --yellow: #fedd02;
+
+            --navy: #061b2d;
+            --navy-2: #0a2942;
+
+            --text: #18364d;
+            --muted: #718697;
+
+            --border: #dcecf7;
+
+            --light-blue: #eef8ff;
+            --light-blue-2: #f7fbff;
+
+            --danger: #d93025;
+        }
+
+
+        /* =========================================================
+           RESET
+        ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            min-height: 100vh;
+
+            font-family: "DM Sans", sans-serif;
+
+            color: var(--text);
+
+            background:
+                radial-gradient(
+                    circle at 10% 10%,
+                    rgba(0, 150, 255, 0.10),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 90% 90%,
+                    rgba(255, 191, 85, 0.10),
+                    transparent 28%
+                ),
+                var(--light-blue-2);
+
+            overflow-x: hidden;
+        }
+
+
+        button,
+        input {
+            font-family: inherit;
+        }
+
+
+        /* =========================================================
+           PAGE
+        ========================================================= */
+
+        .page {
+            min-height: 100vh;
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+        }
+
+
+        /* =========================================================
+           LEFT BRAND PANEL
+        ========================================================= */
+
+        .brand-panel {
+            position: relative;
+
+            min-height: 100vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 60px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #061b2d 0%,
+                    #082b46 55%,
+                    #007bd1 140%
+                );
+
+            overflow: hidden;
+        }
+
+
+        /* Decorative circles */
+
+        .brand-panel::before {
+            content: "";
+
+            position: absolute;
+
+            width: 500px;
+            height: 500px;
+
+            border: 1px solid rgba(255,255,255,.08);
+
+            border-radius: 50%;
+
+            top: -200px;
+            left: -200px;
+        }
+
+
+        .brand-panel::after {
+            content: "";
+
+            position: absolute;
+
+            width: 650px;
+            height: 650px;
+
+            border: 1px solid rgba(255,255,255,.06);
+
+            border-radius: 50%;
+
+            right: -350px;
+            bottom: -350px;
+        }
+
+
+        .brand-content {
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 540px;
+
+            color: white;
+        }
+
+
+        /* =========================================================
+           LOGO
+        ========================================================= */
+
+        .brand-logo {
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            margin-bottom: 60px;
+        }
+
+
+        .logo-mark {
+            width: 58px;
+            height: 58px;
+
+            display: grid;
+
+            place-items: center;
+
+            background: white;
+
+            color: var(--blue-dark);
+
+            border-radius: 12px;
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: 18px;
+
+            font-weight: 800;
+
+            letter-spacing: -0.06em;
+
+            box-shadow:
+                0 15px 40px rgba(0,0,0,.20);
+        }
+
+
+        .logo-mark img {
+            width: 100%;
+            height: 100%;
+            padding: 7px;
+            object-fit: contain;
+            display: block;
+        }
+
+
+        .logo-text {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 2px;
+        }
+
+
+        .logo-text strong {
+            font-family: "Manrope", sans-serif;
+
+            font-size: 20px;
+
+            font-weight: 800;
+
+            letter-spacing: -0.02em;
+        }
+
+
+        .logo-text span {
+            color: rgba(255,255,255,.60);
+
+            font-size: 10px;
+
+            font-weight: 600;
+
+            letter-spacing: .12em;
+
+            text-transform: uppercase;
+        }
+
+
+        /* =========================================================
+           BRAND CONTENT
+        ========================================================= */
+
+        .eyebrow {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            margin-bottom: 20px;
+
+            color: var(--gold);
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: .18em;
+
+            text-transform: uppercase;
+        }
+
+
+        .eyebrow::before {
+            content: "";
+
+            width: 24px;
+            height: 2px;
+
+            background: var(--gold);
+        }
+
+
+        .brand-content h1 {
+            margin-bottom: 22px;
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: clamp(42px, 5vw, 68px);
+
+            line-height: 1.02;
+
+            letter-spacing: -0.055em;
+        }
+
+
+        .brand-content h1 span {
+            color: var(--gold);
+        }
+
+
+        .brand-description {
+            max-width: 480px;
+
+            color: rgba(255,255,255,.66);
+
+            font-size: 16px;
+
+            line-height: 1.8;
+        }
+
+
+        /* =========================================================
+           MOTTO
+        ========================================================= */
+
+        .motto {
+            margin-top: 50px;
+
+            padding-left: 20px;
+
+            border-left: 2px solid var(--gold);
+        }
+
+
+        .motto-label {
+            margin-bottom: 6px;
+
+            color: rgba(255,255,255,.38);
+
+            font-size: 9px;
+
+            font-weight: 800;
+
+            letter-spacing: .16em;
+
+            text-transform: uppercase;
+        }
+
+
+        .motto strong {
+            color: white;
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: 15px;
+
+            font-weight: 700;
+        }
+
+
+        /* =========================================================
+           RIGHT LOGIN PANEL
+        ========================================================= */
+
+        .login-panel {
+            min-height: 100vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 50px;
+
+            background: white;
+        }
+
+
+        .login-container {
+            width: 100%;
+
+            max-width: 450px;
+        }
+
+
+        /* =========================================================
+           LOGIN HEADER
+        ========================================================= */
+
+        .login-header {
+            margin-bottom: 38px;
+        }
+
+
+        .login-header .mini-label {
+            margin-bottom: 12px;
+
+            color: var(--blue-dark);
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            letter-spacing: .16em;
+
+            text-transform: uppercase;
+        }
+
+
+        .login-header h2 {
+            margin-bottom: 10px;
+
+            color: var(--navy);
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: 34px;
+
+            line-height: 1.1;
+
+            letter-spacing: -0.04em;
+        }
+
+
+        .login-header p {
+            color: var(--muted);
+
+            font-size: 14px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================================================
+           FORM
+        ========================================================= */
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+
+        .form-label {
+            display: block;
+
+            margin-bottom: 9px;
+
+            color: var(--navy);
+
+            font-size: 12px;
+
+            font-weight: 700;
+        }
+
+
+        .input-wrapper {
+            position: relative;
+        }
+
+
+        .input-icon {
+            position: absolute;
+
+            left: 17px;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            width: 18px;
+            height: 18px;
+
+            color: #8ca1b0;
+
+            pointer-events: none;
+        }
+
+
+        .form-input {
+            width: 100%;
+
+            height: 56px;
+
+            padding: 0 18px 0 49px;
+
+            border: 1px solid var(--border);
+
+            border-radius: 8px;
+
+            outline: none;
+
+            background: #fbfdff;
+
+            color: var(--navy);
+
+            font-size: 14px;
+
+            transition:
+                border-color .2s ease,
+                box-shadow .2s ease,
+                background .2s ease;
+        }
+
+
+        .form-input::placeholder {
+            color: #a8b7c2;
+        }
+
+
+        .form-input:hover {
+            border-color: #b9d8ec;
+        }
+
+
+        .form-input:focus {
+            border-color: var(--blue);
+
+            background: white;
+
+            box-shadow:
+                0 0 0 4px rgba(0,150,255,.10);
+        }
+
+
+        /* =========================================================
+           PASSWORD TOGGLE
+        ========================================================= */
+
+        .password-toggle {
+            position: absolute;
+
+            right: 15px;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            border: none;
+
+            background: transparent;
+
+            color: #8ca1b0;
+
+            cursor: pointer;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            letter-spacing: .05em;
+        }
+
+
+        .password-toggle:hover {
+            color: var(--blue-dark);
+        }
+
+
+        #password {
+            padding-right: 80px;
+        }
+
+
+        /* =========================================================
+           OPTIONS
+        ========================================================= */
+
+        .form-options {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin: 4px 0 26px;
+        }
+
+
+        .remember {
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            color: var(--muted);
+
+            font-size: 12px;
+
+            cursor: pointer;
+        }
+
+
+        .remember input {
+            width: 15px;
+            height: 15px;
+
+            accent-color: var(--blue);
+        }
+
+
+        .forgot-link {
+            color: var(--blue-dark);
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            text-decoration: none;
+        }
+
+
+        .forgot-link:hover {
+            text-decoration: underline;
+        }
+
+
+        /* =========================================================
+           LOGIN BUTTON
+        ========================================================= */
+
+        .login-button {
+            width: 100%;
+
+            height: 56px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 10px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            background: var(--blue);
+
+            color: white;
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+            letter-spacing: .02em;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 12px 25px rgba(0,150,255,.20);
+
+            transition:
+                background .2s ease,
+                transform .2s ease,
+                box-shadow .2s ease;
+        }
+
+
+        .login-button:hover {
+            background: var(--blue-dark);
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 16px 32px rgba(0,123,209,.25);
+        }
+
+
+        .login-button:active {
+            transform: translateY(0);
+        }
+
+
+        .login-button:disabled {
+            opacity: .65;
+
+            cursor: not-allowed;
+
+            transform: none;
+        }
+
+
+        .button-arrow {
+            font-size: 18px;
+
+            transition: transform .2s ease;
+        }
+
+
+        .login-button:hover .button-arrow {
+            transform: translateX(4px);
+        }
+
+
+        /* =========================================================
+           STATUS MESSAGE
+        ========================================================= */
+
+        .status-message {
+            display: none;
+
+            margin-top: 18px;
+
+            padding: 13px 15px;
+
+            border-radius: 7px;
+
+            font-size: 12px;
+
+            line-height: 1.5;
+        }
+
+
+        .status-message.show {
+            display: block;
+        }
+
+
+        .status-message.error {
+            border: 1px solid rgba(217,48,37,.18);
+
+            background: #fff5f4;
+
+            color: var(--danger);
+        }
+
+
+        .status-message.success {
+            border: 1px solid rgba(0,150,255,.18);
+
+            background: var(--light-blue);
+
+            color: var(--blue-dark);
+        }
+
+
+        /* =========================================================
+           SECURITY NOTICE
+        ========================================================= */
+
+        .security-notice {
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 12px;
+
+            margin-top: 30px;
+
+            padding: 15px;
+
+            border: 1px solid var(--border);
+
+            border-radius: 8px;
+
+            background: var(--light-blue-2);
+        }
+
+
+        .security-icon {
+            width: 30px;
+            height: 30px;
+
+            flex-shrink: 0;
+
+            display: grid;
+
+            place-items: center;
+
+            border-radius: 6px;
+
+            background: rgba(0,150,255,.10);
+
+            color: var(--blue-dark);
+
+            font-size: 13px;
+        }
+
+
+        .security-text strong {
+            display: block;
+
+            margin-bottom: 3px;
+
+            color: var(--navy);
+
+            font-size: 11px;
+
+            font-weight: 800;
+        }
+
+
+        .security-text span {
+            color: var(--muted);
+
+            font-size: 10px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =========================================================
+           BACK TO WEBSITE
+        ========================================================= */
+
+        .back-link {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 7px;
+
+            margin-top: 28px;
+
+            color: var(--muted);
+
+            font-size: 11px;
+
+            font-weight: 600;
+
+            text-decoration: none;
+        }
+
+
+        .back-link:hover {
+            color: var(--blue-dark);
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        .login-footer {
+            margin-top: 40px;
+
+            text-align: center;
+
+            color: #a0afb9;
+
+            font-size: 10px;
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================================================
+           LOADING SPINNER
+        ========================================================= */
+
+        .spinner {
+            width: 16px;
+            height: 16px;
+
+            border: 2px solid rgba(255,255,255,.35);
+
+            border-top-color: white;
+
+            border-radius: 50%;
+
+            animation: spin .7s linear infinite;
+        }
+
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 900px) {
+
+            .page {
+                grid-template-columns: 1fr;
+            }
+
+
+            .brand-panel {
+                min-height: auto;
+
+                padding: 40px 30px;
+            }
+
+
+            .brand-logo {
+                margin-bottom: 40px;
+            }
+
+
+            .brand-content h1 {
+                font-size: 44px;
+            }
+
+
+            .brand-description {
+                font-size: 14px;
+            }
+
+
+            .motto {
+                margin-top: 30px;
+            }
+
+
+            .login-panel {
+                min-height: auto;
+
+                padding: 55px 30px;
+            }
+
+        }
+
+
+        @media (max-width: 500px) {
+
+            .brand-panel {
+                padding: 30px 22px;
+            }
+
+
+            .brand-logo {
+                margin-bottom: 35px;
+            }
+
+
+            .logo-mark {
+                width: 50px;
+                height: 50px;
+
+                font-size: 16px;
+            }
+
+
+            .logo-text strong {
+                font-size: 17px;
+            }
+
+
+            .brand-content h1 {
+                font-size: 38px;
+            }
+
+
+            .login-panel {
+                padding: 45px 22px;
+            }
+
+
+            .login-header h2 {
+                font-size: 29px;
+            }
+
+
+            .form-options {
+                align-items: flex-start;
+
+                gap: 15px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <main class="page">
+
+        <!-- =====================================================
+             LEFT BRAND PANEL
+        ====================================================== -->
+
+        <section class="brand-panel">
+
+            <div class="brand-content">
+
+                <!-- Brand -->
+                <div class="brand-logo">
+
+                    <div class="logo-mark">
+                        <img src="/assets/images/Asset%202.svg" alt="GMNOA logo">
+                    </div>
+
+                    <div class="logo-text">
+
+                        <strong>GMNOA</strong>
+
+                        <span>
+                            Ghana Merchant Navy Officers' Association
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Intro -->
+                <div class="eyebrow">
+                    Administration Portal
+                </div>
+
+
+                <h1>
+                    Manage the
+                    <span>association.</span>
+                </h1>
+
+
+                <p class="brand-description">
+                    Access the GMNOA administration portal to manage
+                    members, leadership, events, publications,
+                    mentorship programmes and other association
+                    activities.
+                </p>
+
+
+                <!-- Motto -->
+                <div class="motto">
+
+                    <div class="motto-label">
+                        Our Motto
+                    </div>
+
+                    <strong>
+                        Brother's Keeper, Sister's Anchor.
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             RIGHT LOGIN PANEL
+        ====================================================== -->
+
+        <section class="login-panel">
+
+            <div class="login-container">
+
+                <!-- Header -->
+                <div class="login-header">
+
+                    <div class="mini-label">
+                        GMNOA Admin
+                    </div>
+
+                    <h2>
+                        Welcome back.
+                    </h2>
+
+                    <p>
+                        Sign in to access the administration
+                        dashboard.
+                    </p>
+
+                </div>
+
+
+                <!-- Login Form -->
+                <form id="loginForm">
+
+                    <!-- Email -->
+                    <div class="form-group">
+
+                        <label
+                            class="form-label"
+                            for="email"
+                        >
+                            Email Address
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <svg
+                                class="input-icon"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                            >
+                                <rect
+                                    x="3"
+                                    y="5"
+                                    width="18"
+                                    height="14"
+                                    rx="2"
+                                />
+
+                                <path
+                                    d="m3 7 9 6 9-6"
+                                />
+                            </svg>
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                class="form-input"
+                                placeholder="example@gmail.com"
+                                autocomplete="email"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Password -->
+                    <div class="form-group">
+
+                        <label
+                            class="form-label"
+                            for="password"
+                        >
+                            Password
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <svg
+                                class="input-icon"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                            >
+                                <rect
+                                    x="4"
+                                    y="10"
+                                    width="16"
+                                    height="11"
+                                    rx="2"
+                                />
+
+                                <path
+                                    d="M8 10V7a4 4 0 0 1 8 0v3"
+                                />
+                            </svg>
+
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                class="form-input"
+                                placeholder="Enter your password"
+                                autocomplete="current-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                id="passwordToggle"
+                            >
+                                Show
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Login -->
+                    <button
+                        type="submit"
+                        class="login-button"
+                        id="loginButton"
+                    >
+
+                        <span id="buttonText">
+                            Sign In
+                        </span>
+
+                        <span
+                            class="button-arrow"
+                            id="buttonArrow"
+                        >
+                            →
+                        </span>
+
+                    </button>
+
+
+                    <!-- Status -->
+                    <div
+                        class="status-message"
+                        id="statusMessage"
+                    ></div>
+
+                </form>
+
+
+                <!-- Security Notice -->
+                <div class="security-notice">
+
+                    <div class="security-icon">
+                        
+                    </div>
+
+                    <div class="security-text">
+
+                        <strong>
+                            Secure Administration Area
+                        </strong>
+
+                        <span>
+                            This portal is restricted to authorised
+                            GMNOA administrators.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Back -->
+                <a
+                    href="index.html"
+                    class="back-link"
+                >
+                    ← Back to GMNOA website
+                </a>
+
+
+                <!-- Footer -->
+                <div class="login-footer">
+
+                    Ghana Merchant Navy Officers' Association
+                    <br>
+
+                    Brother's Keeper, Sister's Anchor.
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================== -->
+
+    <script type="module">
+    import { signIn } from "./src/js/auth.js";
+
+
+    const loginForm =
+        document.getElementById("loginForm");
+
+    const emailInput =
+        document.getElementById("email");
+
+    const passwordInput =
+        document.getElementById("password");
+
+    const loginButton =
+        document.getElementById("loginButton");
+
+    const buttonText =
+        document.getElementById("buttonText");
+
+    const buttonArrow =
+        document.getElementById("buttonArrow");
+
+    const statusMessage =
+        document.getElementById("statusMessage");
+
+
+    function showStatus(message, type = "error") {
+
+        statusMessage.textContent = message;
+
+        statusMessage.className =
+            `status-message show ${type}`;
+
+    }
+
+
+    function clearStatus() {
+
+        statusMessage.textContent = "";
+
+        statusMessage.className =
+            "status-message";
+
+    }
+
+
+    loginForm.addEventListener("submit", async (event) => {
+
+        event.preventDefault();
+
+        clearStatus();
+
+
+        const email =
+            emailInput.value.trim();
+
+        const password =
+            passwordInput.value;
+
+
+        if (!email || !password) {
+
+            showStatus(
+                "Please enter your email address and password."
+            );
+
+            return;
+
+        }
+
+
+        // Loading state
+
+        loginButton.disabled = true;
+
+        buttonText.textContent =
+            "Signing in...";
+
+        buttonArrow.innerHTML =
+            '<span class="spinner"></span>';
+
+
+        // Supabase authentication
+
+        const result =
+            await signIn(email, password);
+
+
+        if (!result.success) {
+
+            loginButton.disabled = false;
+
+            buttonText.textContent =
+                "Sign In";
+
+            buttonArrow.textContent =
+                "→";
+
+
+            showStatus(
+                result.error,
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        // Successful authentication
+
+        buttonText.textContent =
+            "Success";
+
+        buttonArrow.textContent =
+            "✓";
+
+
+        showStatus(
+            "Login successful. Redirecting...",
+            "success"
+        );
+
+
+        setTimeout(() => {
+
+            window.location.href =
+                "admin-dashboard.html";
+
+        }, 700);
+
+    });
+</script>
+
+<script type="module" src="/src/js/no-download.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="/assets/images/Asset%202.svg">
+    <title>GMNOA Blog</title>
+    <meta
+        name="description"
+        content="Read updates, insights, and stories from the Ghana Merchant Navy Officers' Association."
+    >
+    <link rel="canonical" href="https://gmnoa.org/blog.html">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="GMNOA Blog">
+    <meta property="og:description" content="Read updates from the Ghana Merchant Navy Officers' Association.">
+    <meta property="og:url" content="https://gmnoa.org/blog.html">
+    <meta property="og:image" content="https://gmnoa.org/assets/images/Asset%202.svg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap"
+        rel="stylesheet"
+    >
+    <style>
+        :root {
+            --blue: #0096ff;
+            --navy: #061b2d;
+            --text: #18364d;
+            --muted: #718697;
+            --border: #dcecf7;
+            --light: #f7fbff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: "DM Sans", sans-serif;
+            color: var(--text);
+            background: var(--light);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: rgba(255,255,255,.94);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(16px);
+        }
+
+        .container {
+            width: min(1120px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        .nav {
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: "Manrope", sans-serif;
+            color: var(--navy);
+            font-weight: 800;
+        }
+
+        .brand img {
+            width: 38px;
+            height: 38px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .back {
+            color: var(--blue);
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        main {
+            padding: 58px 0 80px;
+        }
+
+        .article {
+            max-width: 860px;
+            margin: 0 auto;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 18px 50px rgba(6, 27, 45, .08);
+        }
+
+        .article-image {
+            width: 100%;
+            aspect-ratio: 16 / 8;
+            object-fit: cover;
+            display: block;
+            background: #e9f4fb;
+        }
+
+        .article-body {
+            padding: clamp(28px, 5vw, 54px);
+        }
+
+        .meta {
+            color: var(--blue);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            margin-top: 14px;
+            color: var(--navy);
+            font-family: "Manrope", sans-serif;
+            font-size: clamp(34px, 6vw, 58px);
+            line-height: 1.04;
+        }
+
+        .excerpt {
+            margin-top: 18px;
+            color: var(--muted);
+            font-size: 18px;
+            line-height: 1.75;
+        }
+
+        .content {
+            margin-top: 34px;
+            color: var(--text);
+            font-size: 17px;
+            line-height: 1.9;
+            white-space: pre-wrap;
+        }
+
+        .empty {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 50px;
+            text-align: center;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+
+        .blog-list-header {
+            max-width: 860px;
+            margin: 0 auto 34px;
+        }
+
+        .blog-list-header h1 {
+            max-width: 780px;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .blog-card {
+            min-width: 0;
+            overflow: hidden;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            box-shadow: 0 18px 44px rgba(6, 27, 45, .08);
+        }
+
+        .blog-card-image {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            object-fit: cover;
+            display: block;
+            background: #e9f4fb;
+        }
+
+        .blog-card-body {
+            padding: 24px;
+        }
+
+        .blog-card h2 {
+            margin-top: 12px;
+            color: var(--navy);
+            font-family: "Manrope", sans-serif;
+            font-size: 23px;
+            line-height: 1.18;
+        }
+
+        .blog-card p {
+            margin-top: 12px;
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .read-more {
+            display: inline-flex;
+            margin-top: 18px;
+            color: var(--blue);
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        @media (max-width: 900px) {
+            .blog-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                width: min(100% - 28px, 1120px);
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            main {
+                padding-top: 38px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="topbar">
+        <div class="container nav">
+            <a class="brand" href="index.html">
+                <img src="/assets/images/Asset%202.svg" alt="GMNOA logo">
+                <span>GMNOA</span>
+            </a>
+            <a class="back" href="index.html#blogs">Back to blogs</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <article class="article" id="article">
+            <div class="article-body">
+                <div class="meta">Loading</div>
+                <h1>Loading article...</h1>
+                <p class="excerpt">Please wait while the article loads.</p>
+            </div>
+        </article>
+    </main>
+
+    <script type="module">
+        import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+
+        const SUPABASE_URL = "https://lnctolzzigpsjsvhtxwe.supabase.co";
+        const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_O_JT8-AD_heentaVPRdXEQ_x9zCoDtt";
+        const supabaseClient = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+        const fallbackImage = "https://images.unsplash.com/photo-1494412651409-8963ce7935a7?auto=format&fit=crop&w=1400&q=85";
+        const storageBucket = "gmnoa-images";
+
+        const params = new URLSearchParams(window.location.search);
+        const slug = params.get("slug") || "";
+        const id = params.get("id") || "";
+
+        if (slug || id) {
+            loadArticle();
+        }
+        else {
+            loadAllPosts();
+        }
+
+        async function loadArticle() {
+            if (!slug && !id) {
+                renderEmpty("Article not found.");
+                return;
+            }
+
+            let query = supabaseClient
+                .from("blog_posts")
+                .select("*")
+                .eq("status", "published");
+
+            query = slug
+                ? query.eq("slug", slug)
+                : query.eq("id", id);
+
+            const { data, error } = await query.single();
+
+            if (error || !data) {
+                renderEmpty("This article is not available.");
+                return;
+            }
+
+            renderArticle(await resolveBlogPostImage(data));
+        }
+
+        async function loadAllPosts() {
+            const { data, error } = await supabaseClient
+                .from("blog_posts")
+                .select("*")
+                .eq("status", "published")
+                .order("published_at", {
+                    ascending: false,
+                    nullsFirst: false
+                })
+                .order("created_at", {
+                    ascending: false
+                });
+
+            if (error) {
+                renderEmpty("Blog posts are not available right now.");
+                return;
+            }
+
+            if (!data?.length) {
+                renderEmpty("No blog posts have been published yet.");
+                return;
+            }
+
+            const posts = await Promise.all(data.map(resolveBlogPostImage));
+            renderPostList(posts);
+        }
+
+        function renderPostList(posts) {
+            document.title = "All Blog Posts | GMNOA";
+            setMeta("description", "Read all published updates, insights, and stories from the Ghana Merchant Navy Officers' Association.");
+            setMeta("og:type", "website");
+            setMeta("og:title", "All Blog Posts | GMNOA");
+            setMeta("og:description", "Read all published updates from the Ghana Merchant Navy Officers' Association.");
+            setMeta("og:url", window.location.href);
+
+            document.querySelector("main").innerHTML = `
+                <section class="blog-list-header">
+                    <div class="meta">GMNOA Blog</div>
+                    <h1>All blog posts</h1>
+                    <p class="excerpt">
+                        Browse every published update from the Ghana Merchant Navy Officers' Association.
+                    </p>
+                </section>
+                <section class="blog-grid">
+                    ${posts.map(renderPostCard).join("")}
+                </section>
+            `;
+        }
+
+        function renderPostCard(post) {
+            const text = post.excerpt ||
+                trimText(post.content, 150) ||
+                "Read the latest update from the GMNOA maritime community.";
+
+            return `
+                <article class="blog-card">
+                    <img
+                        class="blog-card-image"
+                        src="${escapeHTML(blogImageUrl(post))}"
+                        alt="${escapeHTML(post.title || "GMNOA blog post")}"
+                    >
+                    <div class="blog-card-body">
+                        <div class="meta">
+                            ${escapeHTML(post.category || formatDate(post.published_at || post.created_at))}
+                        </div>
+                        <h2>${escapeHTML(post.title || "GMNOA Update")}</h2>
+                        <p>${escapeHTML(text)}</p>
+                        <a
+                            class="read-more"
+                            href="${escapeHTML(blogPostHref(post))}"
+                        >
+                            Read Article &rarr;
+                        </a>
+                    </div>
+                </article>
+            `;
+        }
+
+        function renderArticle(post) {
+            document.title = `${post.title} | GMNOA`;
+            setMeta("description", post.excerpt || trimText(post.content, 150));
+            setMeta("og:title", `${post.title} | GMNOA`);
+            setMeta("og:description", post.excerpt || trimText(post.content, 150));
+            setMeta("og:image", blogImageUrl(post));
+            setMeta("og:url", window.location.href);
+
+            document.getElementById("article").innerHTML = `
+                <img
+                    class="article-image"
+                    src="${escapeHTML(blogImageUrl(post))}"
+                    alt="${escapeHTML(post.title || "GMNOA article")}"
+                >
+                <div class="article-body">
+                    <div class="meta">
+                        ${escapeHTML(post.category || formatDate(post.published_at || post.created_at))}
+                    </div>
+                    <h1>${escapeHTML(post.title || "GMNOA Article")}</h1>
+                    ${
+                        post.excerpt
+                            ? `<p class="excerpt">${escapeHTML(post.excerpt)}</p>`
+                            : ""
+                    }
+                    <div class="content">${escapeHTML(post.content || "")}</div>
+                </div>
+            `;
+        }
+
+        function renderEmpty(message) {
+            document.querySelector("main").innerHTML = `
+                <div class="empty">
+                    <h1>${escapeHTML(message)}</h1>
+                    <p class="excerpt">Return to the blog section to choose another article.</p>
+                </div>
+            `;
+        }
+
+        function blogImageUrl(post) {
+            return post.resolved_blog_image_url ||
+                post.featured_image_url ||
+                post.image_url ||
+                fallbackImage;
+        }
+
+        async function resolveBlogPostImage(post) {
+            return {
+                ...post,
+                resolved_blog_image_url: await resolveStorageImageUrl(
+                    post.featured_image_url || post.image_url
+                )
+            };
+        }
+
+        async function resolveStorageImageUrl(url) {
+            const storagePath = storagePathFromImageUrl(url);
+
+            if (!storagePath) {
+                return url || fallbackImage;
+            }
+
+            const { data, error } = await supabaseClient
+                .storage
+                .from(storageBucket)
+                .createSignedUrl(storagePath, 60 * 60);
+
+            if (error || !data?.signedUrl) {
+                return url || fallbackImage;
+            }
+
+            return data.signedUrl;
+        }
+
+        function storagePathFromImageUrl(url) {
+            if (!url) {
+                return "";
+            }
+
+            const value = String(url).trim();
+
+            if (
+                value.startsWith("blogs/") ||
+                value.startsWith("site/") ||
+                value.startsWith("events/") ||
+                value.startsWith("leaders/")
+            ) {
+                return value;
+            }
+
+            try {
+                const parsed = new URL(value);
+                const markers = [
+                    `/storage/v1/object/public/${storageBucket}/`,
+                    `/storage/v1/object/sign/${storageBucket}/`,
+                    `/storage/v1/object/${storageBucket}/`
+                ];
+
+                for (const marker of markers) {
+                    const index = parsed.pathname.indexOf(marker);
+
+                    if (index !== -1) {
+                        return decodeURIComponent(
+                            parsed.pathname.slice(index + marker.length)
+                        );
+                    }
+                }
+            }
+
+            catch {
+                return "";
+            }
+
+            return "";
+        }
+
+        function blogPostHref(post) {
+            if (post.slug) {
+                return `blog.html?slug=${encodeURIComponent(post.slug)}`;
+            }
+
+            if (post.id) {
+                return `blog.html?id=${encodeURIComponent(post.id)}`;
+            }
+
+            return "blog.html";
+        }
+
+        function setMeta(name, value) {
+            const selector = name.startsWith("og:")
+                ? `meta[property="${name}"]`
+                : `meta[name="${name}"]`;
+            const tag = document.querySelector(selector);
+
+            if (tag && value) {
+                tag.setAttribute("content", value);
+            }
+        }
+
+        function escapeHTML(value) {
+            return String(value ?? "").replace(/[&<>"']/g, char => ({
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&#039;"
+            }[char]));
+        }
+
+        function formatDate(value) {
+            if (!value) {
+                return "GMNOA Blog";
+            }
+
+            const date = new Date(value);
+
+            if (Number.isNaN(date.getTime())) {
+                return "GMNOA Blog";
+            }
+
+            return date.toLocaleDateString("en-GH", {
+                year: "numeric",
+                month: "short",
+                day: "numeric"
+            });
+        }
+
+        function trimText(value, length) {
+            const text = String(value || "").trim();
+            return text.length > length
+                ? `${text.slice(0, length).trim()}...`
+                : text;
+        }
+    </script>
+    <script type="module" src="/src/js/no-download.js"></script>
+</body>
+</html>

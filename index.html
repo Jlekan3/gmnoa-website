@@ -1,0 +1,5255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="/assets/images/Asset%202.svg">
+
+    <title>GMNOA | Ghana Merchant Navy Officers' Association</title>
+
+    <meta
+        name="description"
+        content="Ghana Merchant Navy Officers' Association — promoting professionalism, unity, welfare, mentorship and excellence within Ghana's maritime community."
+    >
+
+    <link rel="canonical" href="https://gmnoa.org/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="GMNOA | Ghana Merchant Navy Officers' Association">
+    <meta property="og:description" content="Promoting professionalism, unity, welfare, mentorship and excellence within Ghana's maritime community.">
+    <meta property="og:url" content="https://gmnoa.org/">
+    <meta property="og:image" content="https://gmnoa.org/assets/images/Asset%202.svg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="GMNOA | Ghana Merchant Navy Officers' Association">
+    <meta name="twitter:description" content="Promoting professionalism, unity, welfare, mentorship and excellence within Ghana's maritime community.">
+    <meta name="twitter:image" content="https://gmnoa.org/assets/images/Asset%202.svg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        /* =========================================================
+           ROOT
+        ========================================================= */
+
+        :root {
+            --white: #ffffff;
+
+            --blue: #0096ff;
+            --blue-dark: #007bd1;
+
+            --gold: #ffbf55;
+            --yellow: #fedd02;
+
+            --navy: #061b2d;
+            --navy-2: #0a2942;
+
+            --text: #18364d;
+            --muted: #6b8294;
+
+            --light-blue: #eef8ff;
+            --light-blue-2: #f7fbff;
+
+            --border: #dcecf7;
+
+            --shadow-sm:
+                0 8px 30px rgba(0, 80, 140, .07);
+
+            --shadow-md:
+                0 25px 70px rgba(0, 80, 140, .13);
+
+            --radius-sm: 10px;
+            --radius-md: 18px;
+            --radius-lg: 30px;
+        }
+
+
+        /* =========================================================
+           RESET
+        ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "DM Sans", sans-serif;
+            background: var(--white);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button,
+        input,
+        textarea {
+            font: inherit;
+        }
+
+        .container {
+            width: min(1180px, calc(100% - 40px));
+            margin: auto;
+        }
+
+        .section {
+            padding: 110px 0;
+        }
+
+
+        /* =========================================================
+           TYPOGRAPHY
+        ========================================================= */
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+
+            color: var(--blue-dark);
+
+            font-size: 12px;
+            font-weight: 800;
+
+            letter-spacing: .16em;
+            text-transform: uppercase;
+
+            margin-bottom: 18px;
+        }
+
+        .eyebrow::before {
+            content: "";
+
+            width: 32px;
+            height: 3px;
+
+            border-radius: 20px;
+
+            background: var(--yellow);
+        }
+
+        .section-title {
+            max-width: 760px;
+
+            font-family: "Manrope", sans-serif;
+
+            color: var(--navy);
+
+            font-size: clamp(35px, 5vw, 58px);
+
+            line-height: 1.03;
+
+            letter-spacing: -.045em;
+        }
+
+        .section-description {
+            max-width: 680px;
+
+            margin-top: 20px;
+
+            color: var(--muted);
+
+            font-size: 17px;
+        }
+
+
+        /* =========================================================
+           TOP BAR
+        ========================================================= */
+
+        .topbar {
+            background: var(--navy);
+
+            color: white;
+
+            font-size: 12px;
+        }
+
+        .topbar-inner {
+            min-height: 40px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+        .topbar-left,
+        .topbar-right {
+            display: flex;
+            align-items: center;
+
+            gap: 20px;
+        }
+
+        .top-item {
+            display: flex;
+            align-items: center;
+
+            gap: 7px;
+
+            opacity: .9;
+        }
+
+        .top-item strong {
+            color: var(--yellow);
+        }
+
+
+        /* =========================================================
+           NAVIGATION
+        ========================================================= */
+
+        .nav {
+            position: sticky;
+            top: 0;
+
+            z-index: 1000;
+
+            background: rgba(255,255,255,.95);
+
+            backdrop-filter: blur(18px);
+
+            border-bottom: 1px solid rgba(0,123,209,.10);
+        }
+
+        .nav-inner {
+            height: 82px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 25px;
+        }
+
+
+        /* BRAND */
+
+        .brand {
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+
+            min-width: 230px;
+        }
+
+        .brand-mark {
+            width: 46px;
+            height: 46px;
+
+            flex-shrink: 0;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 12px;
+
+            background: white;
+
+            color: var(--blue);
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: 15px;
+            font-weight: 900;
+
+            box-shadow:
+                0 10px 25px rgba(0,80,140,.12);
+        }
+
+        .brand-mark img {
+            width: 100%;
+            height: 100%;
+            padding: 6px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .brand-text strong {
+            display: block;
+
+            font-family: "Manrope", sans-serif;
+
+            color: var(--navy);
+
+            font-size: 15px;
+
+            line-height: 1.1;
+
+            font-weight: 800;
+        }
+
+        .brand-text small {
+            display: block;
+
+            color: var(--muted);
+
+            font-size: 9px;
+
+            letter-spacing: .06em;
+
+            text-transform: uppercase;
+
+            margin-top: 3px;
+        }
+
+
+        /* NAV LINKS */
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+
+            gap: 23px;
+        }
+
+        .nav-links a {
+            position: relative;
+
+            color: #36536a;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            transition: .25s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--blue);
+        }
+
+        .nav-links a::after {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            bottom: -9px;
+
+            width: 0;
+            height: 2px;
+
+            background: var(--yellow);
+
+            transition: .25s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+
+        /* NAV BUTTON */
+
+        .nav-cta {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            min-height: 45px;
+
+            padding: 0 18px;
+
+            border-radius: 8px;
+
+            background: var(--blue);
+
+            color: white;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            transition: .25s ease;
+        }
+
+        .nav-cta:hover {
+            background: var(--blue-dark);
+
+            transform: translateY(-2px);
+        }
+
+        .menu-btn {
+            display: none;
+
+            border: none;
+
+            background: transparent;
+
+            color: var(--navy);
+
+            font-size: 27px;
+
+            cursor: pointer;
+        }
+
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .hero {
+            position: relative;
+
+            min-height: 750px;
+
+            display: flex;
+            align-items: center;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(4,24,40,.72) 0%,
+                    rgba(4,35,59,.46) 44%,
+                    rgba(0,123,209,.10) 100%
+                ),
+
+                url("/assets/images/landingii.jpg")
+                center / cover;
+        }
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            z-index: 1;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(4,24,40,.72) 0%,
+                    rgba(4,35,59,.46) 44%,
+                    rgba(0,123,209,.10) 100%
+                );
+        }
+
+        .hero::after {
+            content: "";
+
+            position: absolute;
+
+            inset: auto 0 0;
+
+            z-index: 1;
+
+            height: 130px;
+
+            background:
+                linear-gradient(
+                    transparent,
+                    rgba(255,255,255,.10)
+                );
+        }
+
+        .hero-content {
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 790px;
+
+            color: white;
+
+            padding: 100px 0;
+        }
+
+        .hero-kicker {
+            display: flex;
+            align-items: center;
+
+            gap: 10px;
+
+            margin-bottom: 22px;
+
+            color: var(--yellow);
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            letter-spacing: .17em;
+
+            text-transform: uppercase;
+        }
+
+        .hero-kicker span {
+            width: 35px;
+            height: 2px;
+
+            background: var(--yellow);
+        }
+
+        .hero h1 {
+            font-family: "Manrope", sans-serif;
+
+            font-size: clamp(48px, 7vw, 84px);
+
+            line-height: .98;
+
+            letter-spacing: -.06em;
+
+            max-width: 850px;
+        }
+
+        .hero h1 em {
+            color: var(--blue);
+
+            font-style: normal;
+        }
+
+        .hero-description {
+            max-width: 680px;
+
+            margin-top: 28px;
+
+            color: rgba(255,255,255,.78);
+
+            font-size: 18px;
+
+            line-height: 1.75;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+
+            gap: 12px;
+
+            margin-top: 35px;
+        }
+
+        .btn {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 10px;
+
+            min-height: 50px;
+
+            padding: 0 23px;
+
+            border-radius: 8px;
+
+            border: none;
+
+            cursor: pointer;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            transition: .25s ease;
+        }
+
+        .btn-primary {
+            background: var(--yellow);
+
+            color: var(--navy);
+        }
+
+        .btn-primary:hover {
+            background: var(--gold);
+
+            transform: translateY(-2px);
+        }
+
+        .btn-light {
+            background: rgba(255,255,255,.08);
+
+            border: 1px solid rgba(255,255,255,.30);
+
+            color: white;
+
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-light:hover {
+            background: white;
+
+            color: var(--navy);
+        }
+
+
+        /* HERO INFO */
+
+        .hero-info {
+            position: absolute;
+
+            z-index: 3;
+
+            right: 0;
+            bottom: 0;
+
+            width: min(610px, 50%);
+
+            padding: 25px 35px;
+
+            background: white;
+
+            color: var(--navy);
+
+            display: grid;
+
+            grid-template-columns: repeat(3,1fr);
+
+            gap: 20px;
+        }
+
+        .hero-info strong {
+            display: block;
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: 25px;
+        }
+
+        .hero-info span {
+            display: block;
+
+            color: var(--muted);
+
+            font-size: 11px;
+
+            margin-top: 2px;
+        }
+
+
+        /* =========================================================
+           ABOUT
+        ========================================================= */
+
+        .about {
+            background: white;
+        }
+
+        .about-grid {
+            display: grid;
+
+            grid-template-columns: .75fr 1.25fr;
+
+            gap: 90px;
+
+            align-items: center;
+        }
+
+        .about-visual {
+            position: relative;
+
+            --tilt-x: 0deg;
+            --tilt-y: 0deg;
+            --glow-x: 50%;
+            --glow-y: 35%;
+
+            min-height: 420px;
+
+            overflow: hidden;
+
+            display: grid;
+
+            place-items: center;
+
+            border-radius: var(--radius-lg);
+
+            background:
+                radial-gradient(
+                    circle at 20% 20%,
+                    rgba(0,150,255,.28),
+                    transparent 34%
+                ),
+                linear-gradient(
+                    145deg,
+                    #031528 0%,
+                    #06315c 48%,
+                    #061b2d 100%
+                );
+
+            box-shadow: var(--shadow-md);
+        }
+
+        .about-visual::before {
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            z-index: 0;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,.08) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    rgba(255,255,255,.08) 1px,
+                    transparent 1px
+                );
+
+            background-size: 34px 34px;
+
+            mask-image:
+                radial-gradient(
+                    circle at var(--glow-x) var(--glow-y),
+                    #000,
+                    transparent 68%
+                );
+
+            animation: aboutGridDrift 14s linear infinite;
+        }
+
+        .about-visual-scene {
+            position: absolute;
+
+            inset: 0;
+
+            display: grid;
+
+            place-items: center;
+
+            transform:
+                perspective(900px)
+                rotateX(var(--tilt-x))
+                rotateY(var(--tilt-y));
+
+            transform-style: preserve-3d;
+
+            transition: transform .25s ease;
+        }
+
+        .about-float-text {
+            position: absolute;
+
+            font-family: "Manrope", sans-serif;
+
+            font-weight: 800;
+
+            letter-spacing: -.06em;
+
+            pointer-events: none;
+        }
+
+        .about-float-text.top {
+            top: 28px;
+            left: -26px;
+
+            color: rgba(255,255,255,.08);
+
+            font-size: clamp(82px, 10vw, 140px);
+
+            animation: aboutFloatOne 7s ease-in-out infinite;
+        }
+
+        .about-float-text.bottom {
+            right: -18px;
+            bottom: 24px;
+
+            color: rgba(254,221,2,.16);
+
+            font-size: clamp(68px, 8vw, 110px);
+
+            animation: aboutFloatTwo 8s ease-in-out infinite;
+        }
+
+        .about-visual-main {
+            position: relative;
+
+            z-index: 2;
+
+            display: grid;
+
+            place-items: center;
+
+            width: min(78%, 300px);
+
+            aspect-ratio: 1;
+
+            border: 1px solid rgba(255,255,255,.18);
+
+            border-radius: 28px;
+
+            background: rgba(255,255,255,.08);
+
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,.08);
+
+            backdrop-filter: blur(10px);
+
+            transform: translateZ(50px);
+
+            transition:
+                border-color .25s ease,
+                background .25s ease,
+                box-shadow .25s ease;
+        }
+
+        .about-visual:hover .about-visual-main {
+            border-color: rgba(254,221,2,.55);
+
+            background: rgba(255,255,255,.12);
+
+            box-shadow:
+                inset 0 0 0 1px rgba(255,255,255,.11),
+                0 22px 55px rgba(0,0,0,.24);
+        }
+
+        .about-visual-main span {
+            color: white;
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: clamp(48px, 7vw, 82px);
+
+            font-weight: 800;
+
+            line-height: .88;
+
+            letter-spacing: -.07em;
+
+            text-align: center;
+        }
+
+        .about-visual-badge {
+            position: absolute;
+
+            z-index: 3;
+
+            left: 28px;
+            bottom: 28px;
+
+            max-width: 190px;
+
+            padding: 14px 16px;
+
+            border: 1px solid rgba(255,255,255,.16);
+
+            border-radius: 12px;
+
+            background: rgba(0,0,0,.24);
+
+            color: rgba(255,255,255,.78);
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            transform: translateZ(70px);
+        }
+
+        .about-orbit {
+            position: absolute;
+
+            z-index: 1;
+
+            width: 82%;
+            aspect-ratio: 1;
+
+            border: 1px solid rgba(255,255,255,.16);
+
+            border-radius: 50%;
+
+            animation: aboutOrbit 18s linear infinite;
+        }
+
+        .about-orbit::before,
+        .about-orbit::after {
+            content: "";
+
+            position: absolute;
+
+            width: 10px;
+            height: 10px;
+
+            border-radius: 50%;
+
+            background: var(--yellow);
+
+            box-shadow: 0 0 24px rgba(254,221,2,.55);
+        }
+
+        .about-orbit::before {
+            top: 12%;
+            right: 18%;
+        }
+
+        .about-orbit::after {
+            left: 18%;
+            bottom: 12%;
+        }
+
+        .about-chip {
+            position: absolute;
+
+            z-index: 3;
+
+            right: 28px;
+            top: 28px;
+
+            padding: 10px 13px;
+
+            border: 1px solid rgba(255,255,255,.16);
+
+            border-radius: 999px;
+
+            background: rgba(255,255,255,.10);
+
+            color: white;
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: .1em;
+
+            text-transform: uppercase;
+
+            transform: translateZ(80px);
+        }
+
+        @keyframes aboutGridDrift {
+            to {
+                background-position: 34px 34px;
+            }
+        }
+
+        @keyframes aboutFloatOne {
+            50% {
+                transform: translate(12px, 8px);
+            }
+        }
+
+        @keyframes aboutFloatTwo {
+            50% {
+                transform: translate(-10px, -8px);
+            }
+        }
+
+        @keyframes aboutOrbit {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .about-visual::before,
+            .about-float-text.top,
+            .about-float-text.bottom,
+            .about-orbit {
+                animation: none;
+            }
+
+            .about-visual-scene {
+                transform: none;
+            }
+        }
+
+        .about-content h2 {
+            font-family: "Manrope", sans-serif;
+
+            color: var(--navy);
+
+            font-size: clamp(35px, 4vw, 54px);
+
+            line-height: 1.06;
+
+            letter-spacing: -.045em;
+        }
+
+        .about-content p {
+            margin-top: 22px;
+
+            color: var(--muted);
+
+            font-size: 16px;
+
+            max-width: 700px;
+        }
+
+        .about-buttons {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 10px;
+
+            margin-top: 28px;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--border);
+
+            background: white;
+
+            color: var(--navy);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--blue);
+
+            color: var(--blue);
+        }
+
+
+        /* =========================================================
+           MISSION
+        ========================================================= */
+
+        .mission {
+            background: var(--blue);
+        }
+
+        .mission-heading {
+            max-width: 750px;
+
+            margin-bottom: 50px;
+        }
+
+        .mission .eyebrow,
+        .mission .section-title,
+        .mission .section-description {
+            color: white;
+        }
+
+        .mission .section-description {
+            opacity: .86;
+        }
+
+        .mission-grid {
+            display: grid;
+
+            grid-template-columns: repeat(2,1fr);
+
+            gap: 20px;
+        }
+
+        .mission-card {
+            position: relative;
+
+            min-height: 260px;
+
+            padding: 38px;
+
+            background: white;
+
+            border: 1px solid var(--border);
+
+            border-radius: var(--radius-md);
+
+            overflow: hidden;
+
+            transition: .3s ease;
+        }
+
+        .mission-card:hover {
+            transform: translateY(-5px);
+
+            border-color: rgba(0,150,255,.25);
+
+            box-shadow: var(--shadow-md);
+        }
+
+        .mission-card::after {
+            content: "";
+
+            position: absolute;
+
+            right: -70px;
+            bottom: -70px;
+
+            width: 160px;
+            height: 160px;
+
+            border-radius: 50%;
+
+            background: var(--light-blue);
+        }
+
+        .card-number {
+            position: relative;
+
+            z-index: 2;
+
+            margin-bottom: 27px;
+
+            color: var(--blue);
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: .13em;
+        }
+
+        .mission-card h3 {
+            position: relative;
+
+            z-index: 2;
+
+            color: var(--navy);
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: 24px;
+
+            margin-bottom: 12px;
+        }
+
+        .mission-card p {
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 540px;
+
+            color: var(--muted);
+
+            font-size: 14px;
+        }
+
+
+        /* =========================================================
+           LEADERSHIP
+        ========================================================= */
+
+        .leadership {
+            background: white;
+        }
+
+        .section-heading-row {
+            display: flex;
+
+            align-items: flex-end;
+
+            justify-content: space-between;
+
+            gap: 40px;
+
+            margin-bottom: 48px;
+        }
+
+        .leadership-grid {
+            display: grid;
+
+            grid-template-columns: repeat(3,1fr);
+
+            gap: 22px;
+        }
+
+        .leader-card {
+            background: white;
+
+            border: 1px solid var(--border);
+
+            border-radius: var(--radius-md);
+
+            overflow: hidden;
+
+            transition: .3s ease;
+        }
+
+        .leader-card:hover {
+            transform: translateY(-5px);
+
+            box-shadow: var(--shadow-md);
+        }
+
+        .leader-image {
+            height: 350px;
+
+            object-fit: cover;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--light-blue),
+                    #dff2ff
+                );
+        }
+
+        .leader-body {
+            padding: 25px;
+        }
+
+        .leader-role {
+            color: var(--blue);
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: .10em;
+
+            text-transform: uppercase;
+        }
+
+        .leader-name {
+            margin-top: 6px;
+
+            color: var(--navy);
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: 22px;
+        }
+
+        .leader-body p {
+            margin-top: 8px;
+
+            color: var(--muted);
+
+            font-size: 13px;
+        }
+
+
+        /* =========================================================
+           BLOG
+        ========================================================= */
+
+        .blogs {
+            background: var(--light-blue-2);
+        }
+
+        .blog-grid {
+            display: grid;
+
+            grid-template-columns: repeat(3,1fr);
+
+            gap: 22px;
+        }
+
+        .blog-card {
+            background: white;
+
+            border: 1px solid var(--border);
+
+            border-radius: var(--radius-md);
+
+            overflow: hidden;
+
+            transition: .3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+
+            box-shadow: var(--shadow-md);
+        }
+
+        .blog-image {
+            height: 230px;
+
+            object-fit: cover;
+        }
+
+        .blog-body {
+            padding: 26px;
+        }
+
+        .blog-meta {
+            display: flex;
+
+            gap: 10px;
+
+            color: var(--blue);
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            text-transform: uppercase;
+
+            letter-spacing: .08em;
+        }
+
+        .blog-card h3 {
+            margin-top: 11px;
+
+            color: var(--navy);
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: 21px;
+
+            line-height: 1.25;
+        }
+
+        .blog-card p {
+            margin-top: 10px;
+
+            color: var(--muted);
+
+            font-size: 14px;
+        }
+
+        .read-more {
+            display: inline-flex;
+
+            margin-top: 18px;
+
+            color: var(--blue-dark);
+
+            font-size: 13px;
+
+            font-weight: 800;
+        }
+
+
+        /* =========================================================
+           EVENTS
+        ========================================================= */
+
+        .events {
+            background: white;
+        }
+
+        .events-grid {
+            display: grid;
+
+            grid-template-columns: repeat(3,1fr);
+
+            gap: 22px;
+        }
+
+        .event-card {
+            position: relative;
+
+            min-height: 360px;
+
+            overflow: hidden;
+
+            border-radius: var(--radius-md);
+
+            background: var(--navy);
+
+            color: white;
+        }
+
+        .event-image {
+            position: absolute;
+
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            opacity: .62;
+
+            transition: .4s ease;
+        }
+
+        .event-card:hover .event-image {
+            transform: scale(1.05);
+
+            opacity: .72;
+        }
+
+        .event-overlay {
+            position: absolute;
+
+            inset: 0;
+
+            padding: 28px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: flex-end;
+
+            background:
+                linear-gradient(
+                    transparent 25%,
+                    rgba(3,19,32,.94)
+                );
+        }
+
+        .event-date {
+            color: var(--yellow);
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: .10em;
+
+            text-transform: uppercase;
+        }
+
+        .event-card h3 {
+            margin-top: 9px;
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: 23px;
+
+            line-height: 1.2;
+        }
+
+        .event-card p {
+            margin-top: 8px;
+
+            color: rgba(255,255,255,.7);
+
+            font-size: 13px;
+        }
+
+        .event-link {
+            margin-top: 17px;
+
+            padding: 0;
+
+            border: 0;
+
+            background: transparent;
+
+            color: white;
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+            text-align: left;
+
+            cursor: pointer;
+        }
+
+        .event-detail-row {
+            margin-top: 10px;
+
+            color: rgba(3,19,32,.78);
+
+            font-size: 13px;
+
+            line-height: 1.7;
+
+            white-space: pre-line;
+        }
+
+        .event-detail-label {
+            display: block;
+
+            color: var(--blue);
+
+            font-size: 11px;
+
+            font-weight: 900;
+
+            letter-spacing: .08em;
+
+            text-transform: uppercase;
+        }
+
+        .event-register-link {
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            margin-top: 20px;
+
+            padding: 12px 18px;
+
+            border-radius: 6px;
+
+            background: var(--blue);
+
+            color: white;
+
+            font-size: 13px;
+
+            font-weight: 900;
+        }
+
+        .event-modal-backdrop {
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 1000;
+
+            display: grid;
+
+            place-items: center;
+
+            padding: 22px;
+
+            background: rgba(3,19,32,.68);
+
+            backdrop-filter: blur(8px);
+        }
+
+        .event-modal-backdrop[hidden] {
+            display: none;
+        }
+
+        .event-modal-card {
+            position: relative;
+
+            width: min(760px,100%);
+
+            max-height: calc(100vh - 44px);
+
+            overflow-y: auto;
+
+            border-radius: var(--radius-md);
+
+            background: white;
+
+            box-shadow: 0 28px 80px rgba(3,19,32,.34);
+        }
+
+        .event-modal-image {
+            width: 100%;
+
+            height: 260px;
+
+            object-fit: cover;
+
+            background: var(--navy);
+        }
+
+        .event-modal-body {
+            padding: 30px;
+        }
+
+        .event-modal-body h3 {
+            margin-top: 8px;
+
+            font-family: "Manrope", sans-serif;
+
+            color: var(--navy);
+
+            font-size: clamp(24px,4vw,34px);
+
+            line-height: 1.1;
+        }
+
+        .event-modal-close {
+            position: absolute;
+
+            top: 14px;
+
+            right: 14px;
+
+            width: 42px;
+
+            height: 42px;
+
+            border: 0;
+
+            border-radius: 50%;
+
+            background: rgba(255,255,255,.94);
+
+            color: var(--navy);
+
+            font-size: 24px;
+
+            font-weight: 900;
+
+            cursor: pointer;
+        }
+
+
+        /* =========================================================
+           JOIN US
+        ========================================================= */
+
+        .join {
+            background: var(--blue);
+
+            color: white;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .join::before {
+            content: "";
+
+            position: absolute;
+
+            width: 500px;
+            height: 500px;
+
+            right: -230px;
+            top: -230px;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(255,255,255,.18);
+        }
+
+        .join-inner {
+            position: relative;
+
+            z-index: 2;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 50px;
+        }
+
+        .join-content {
+            max-width: 750px;
+        }
+
+        .join .eyebrow {
+            color: white;
+        }
+
+        .join h2 {
+            font-family: "Manrope", sans-serif;
+
+            font-size: clamp(35px, 5vw, 62px);
+
+            line-height: 1.03;
+
+            letter-spacing: -.045em;
+        }
+
+        .join p {
+            margin-top: 20px;
+
+            color: rgba(255,255,255,.78);
+
+            font-size: 16px;
+        }
+
+        .join-action {
+            flex-shrink: 0;
+        }
+
+        .join-action .btn {
+            background: var(--yellow);
+
+            color: var(--navy);
+
+            min-width: 180px;
+        }
+
+        .join-action .btn:hover {
+            background: var(--gold);
+        }
+
+
+        /* =========================================================
+           MENTORSHIP
+        ========================================================= */
+
+        .mentorship {
+            background: var(--light-blue-2);
+        }
+
+        .mentorship-grid {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 70px;
+
+            align-items: center;
+        }
+
+        .mentorship-image {
+            position: relative;
+
+            min-height: 520px;
+
+            border-radius: var(--radius-lg);
+
+            overflow: hidden;
+
+            background:
+                url("https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=85")
+                center / cover;
+        }
+
+        .mentorship-image::after {
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(0,150,255,.18),
+                    rgba(4,24,40,.45)
+                );
+        }
+
+        .mentorship-badge {
+            position: absolute;
+
+            z-index: 2;
+
+            left: 25px;
+            bottom: 25px;
+
+            max-width: 270px;
+
+            padding: 20px;
+
+            border-radius: 14px;
+
+            background: white;
+
+            box-shadow: var(--shadow-md);
+        }
+
+        .mentorship-badge strong {
+            display: block;
+
+            color: var(--navy);
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: 17px;
+        }
+
+        .mentorship-badge span {
+            display: block;
+
+            margin-top: 5px;
+
+            color: var(--muted);
+
+            font-size: 12px;
+        }
+
+        .mentorship-content h2 {
+            font-family: "Manrope", sans-serif;
+
+            color: var(--navy);
+
+            font-size: clamp(35px, 4vw, 55px);
+
+            line-height: 1.05;
+
+            letter-spacing: -.045em;
+        }
+
+        .mentorship-content p {
+            margin-top: 20px;
+
+            color: var(--muted);
+
+            font-size: 16px;
+        }
+
+        .mentorship-list {
+            display: grid;
+
+            gap: 14px;
+
+            margin-top: 28px;
+        }
+
+        .mentorship-list li {
+            list-style: none;
+
+            display: flex;
+
+            gap: 12px;
+
+            color: var(--text);
+
+            font-size: 14px;
+        }
+
+        .mentorship-list li::before {
+            content: "✓";
+
+            flex-shrink: 0;
+
+            display: grid;
+
+            place-items: center;
+
+            width: 22px;
+            height: 22px;
+
+            border-radius: 50%;
+
+            background: var(--yellow);
+
+            color: var(--navy);
+
+            font-size: 11px;
+
+            font-weight: 900;
+        }
+
+
+        /* =========================================================
+           CONTACT
+        ========================================================= */
+
+        .contact {
+            background: var(--blue);
+        }
+
+        .contact-grid {
+            display: grid;
+
+            grid-template-columns: .85fr 1.15fr;
+
+            gap: 70px;
+        }
+
+        .contact .eyebrow {
+            color: white;
+        }
+
+        .contact-info h2 {
+            font-family: "Manrope", sans-serif;
+
+            color: white;
+
+            font-size: clamp(35px, 4vw, 52px);
+
+            line-height: 1.05;
+
+            letter-spacing: -.045em;
+        }
+
+        .contact-info > p {
+            margin-top: 20px;
+
+            color: rgba(255,255,255,.86);
+
+            font-size: 15px;
+        }
+
+        .contact-details {
+            display: grid;
+
+            gap: 18px;
+
+            margin-top: 35px;
+        }
+
+        .contact-detail {
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 14px;
+        }
+
+        .contact-icon {
+            width: 44px;
+            height: 44px;
+
+            flex-shrink: 0;
+
+            display: grid;
+
+            place-items: center;
+
+            border-radius: 10px;
+
+            background: rgba(255,255,255,.16);
+
+            color: white;
+
+            font-weight: 900;
+        }
+
+        .contact-detail strong {
+            display: block;
+
+            color: white;
+
+            font-size: 14px;
+        }
+
+        .contact-detail span {
+            display: block;
+
+            color: rgba(255,255,255,.78);
+
+            font-size: 13px;
+
+            margin-top: 2px;
+        }
+
+
+        /* CONTACT FORM */
+
+        .contact-form {
+            padding: 38px;
+
+            background: var(--light-blue-2);
+
+            border: 1px solid var(--border);
+
+            border-radius: var(--radius-md);
+        }
+
+        .form-grid {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 16px;
+        }
+
+        .form-group {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 7px;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .security-field {
+            position: absolute;
+
+            left: -10000px;
+
+            width: 1px;
+
+            height: 1px;
+
+            overflow: hidden;
+        }
+
+        .form-group label {
+            color: var(--navy);
+
+            font-size: 12px;
+
+            font-weight: 700;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+
+            border: 1px solid var(--border);
+
+            outline: none;
+
+            border-radius: 8px;
+
+            background: white;
+
+            color: var(--navy);
+
+            padding: 14px 15px;
+
+            transition: .2s ease;
+        }
+
+        .form-group textarea {
+            min-height: 140px;
+
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--blue);
+
+            box-shadow:
+                0 0 0 3px rgba(0,150,255,.08);
+        }
+
+        .contact-form .btn {
+            margin-top: 18px;
+
+            background: var(--blue);
+
+            color: white;
+
+            width: 100%;
+        }
+
+        .contact-form .btn:hover {
+            background: var(--blue-dark);
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+            background: #041321;
+
+            color: white;
+
+            padding: 75px 0 25px;
+        }
+
+        .footer-grid {
+            display: grid;
+
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+
+            gap: 45px;
+
+            padding-bottom: 55px;
+        }
+
+        .footer-brand p {
+            max-width: 390px;
+
+            margin-top: 18px;
+
+            color: rgba(255,255,255,.55);
+
+            font-size: 14px;
+        }
+
+        .footer-title {
+            margin-bottom: 18px;
+
+            color: white;
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: 14px;
+
+            font-weight: 700;
+        }
+
+        .footer-links {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 11px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,.55);
+
+            font-size: 13px;
+
+            transition: .2s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            flex-wrap: wrap;
+
+            padding-top: 23px;
+
+            border-top: 1px solid rgba(255,255,255,.1);
+
+            color: rgba(255,255,255,.4);
+
+            font-size: 12px;
+        }
+
+
+        /* =========================================================
+           MOBILE MENU
+        ========================================================= */
+
+        .mobile-menu {
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 3000;
+
+            padding: 25px;
+
+            background: white;
+
+            transform: translateX(100%);
+
+            transition: .35s ease;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .mobile-menu-header {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+        }
+
+        .close-menu {
+            border: none;
+
+            background: transparent;
+
+            color: var(--navy);
+
+            font-size: 32px;
+
+            cursor: pointer;
+        }
+
+        .mobile-links {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 22px;
+
+            margin-top: 60px;
+        }
+
+        .mobile-links a {
+            color: var(--navy);
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: 27px;
+
+            font-weight: 800;
+        }
+
+
+        /* =========================================================
+           ANIMATIONS
+        ========================================================= */
+
+        .reveal {
+            opacity: 0;
+
+            transform: translateY(25px);
+
+            transition:
+                opacity .7s ease,
+                transform .7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+
+            transform: translateY(0);
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 1100px) {
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .nav-links a {
+                font-size: 12px;
+            }
+
+            .nav-cta {
+                padding: 0 13px;
+            }
+
+            .about-grid {
+                gap: 50px;
+            }
+
+        }
+
+
+        @media (max-width: 950px) {
+
+            .nav-links,
+            .nav-cta {
+                display: none;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .hero {
+                min-height: 760px;
+            }
+
+            .hero-info {
+                width: 100%;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+
+                gap: 30px;
+            }
+
+            .about-visual {
+                min-height: 340px;
+            }
+
+            .leadership-grid,
+            .blog-grid,
+            .events-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .mentorship-grid {
+                grid-template-columns: 1fr;
+
+                gap: 40px;
+            }
+
+            .mentorship-image {
+                min-height: 450px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+
+                gap: 45px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 700px) {
+
+            .container {
+                width: min(100% - 28px, 1180px);
+            }
+
+            .topbar {
+                display: none;
+            }
+
+            .nav-inner {
+                height: 70px;
+            }
+
+            .brand {
+                min-width: auto;
+            }
+
+            .brand-text strong {
+                font-size: 13px;
+            }
+
+            .brand-text small {
+                font-size: 8px;
+            }
+
+            .section {
+                padding: 75px 0;
+            }
+
+            .hero {
+                min-height: 760px;
+            }
+
+            .hero-content {
+                padding-top: 75px;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .hero-description {
+                font-size: 16px;
+            }
+
+            .hero-info {
+                padding: 18px;
+
+                grid-template-columns: repeat(3,1fr);
+            }
+
+            .hero-info strong {
+                font-size: 19px;
+            }
+
+            .hero-info span {
+                font-size: 9px;
+            }
+
+            .mission-grid,
+            .leadership-grid,
+            .blog-grid,
+            .events-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-heading-row {
+                display: block;
+            }
+
+            .section-heading-row .btn {
+                margin-top: 20px;
+            }
+
+            .join-inner {
+                display: block;
+            }
+
+            .join-action {
+                margin-top: 30px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+
+            .contact-form {
+                padding: 25px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+            }
+
+        }
+        /* =========================================================
+   PICARVIEW AFFILIATION
+========================================================= */
+
+.footer-affiliation {
+    display: flex;
+}
+
+.picarview-affiliation {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    min-width: 0;
+
+    padding: 7px 10px;
+
+    border: 1px solid rgba(255,255,255,.10);
+
+    border-radius: 8px;
+
+    background: rgba(255,255,255,.035);
+
+    color: rgba(255,255,255,.68);
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    transition:
+        background .25s ease,
+        border-color .25s ease,
+        transform .25s ease;
+}
+
+.picarview-affiliation:hover {
+    background: rgba(255,255,255,.07);
+
+    border-color: rgba(255,191,85,.35);
+
+    transform: translateY(-2px);
+}
+
+.picarview-logo {
+    width: 34px;
+    height: 28px;
+
+    display: grid;
+
+    place-items: center;
+
+    flex-shrink: 0;
+
+    border-radius: 8px;
+
+    background: #000;
+
+    color: #007bd1;
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: 8px;
+
+    font-weight: 900;
+
+    letter-spacing: -.03em;
+}
+
+.picarview-logo img {
+    width: 100%;
+    height: 100%;
+    padding: 2px;
+
+    object-fit: contain;
+    display: block;
+}
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     TOP BAR
+========================================================= -->
+
+<div class="topbar">
+
+    <div class="container topbar-inner">
+
+        <div class="topbar-left">
+
+            <div class="top-item">
+                <strong>●</strong>
+                Ghana Merchant Navy Officers' Association
+            </div>
+
+        </div>
+
+        <div class="topbar-right">
+
+            <div class="top-item">
+                <strong>✉</strong>
+                gmnoa_itfgh@yahoo.co.uk
+            </div>
+
+            <div class="top-item">
+                <strong>☎</strong>
+                +233 591-815-929
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
+<header class="nav">
+
+    <div class="container nav-inner">
+
+        <a href="#home" class="brand">
+
+            <div class="brand-mark">
+                <img src="/assets/images/Asset%202.svg" alt="GMNOA logo">
+            </div>
+
+            <div class="brand-text">
+
+                <strong>GMNOA</strong>
+
+                <small>
+                    Ghana Merchant Navy Officers' Association
+                </small>
+
+            </div>
+
+        </a>
+
+
+        <nav class="nav-links">
+
+            <a href="#home" class="active">Home</a>
+
+            <a href="#about">About Us</a>
+
+            <a href="#leadership">Leadership</a>
+
+            <a href="#blogs">Blogs</a>
+
+            <a href="#events">Events</a>
+
+            <a href="#join">Join Us</a>
+
+            <a href="#mentorship">Mentorship</a>
+
+            <a href="#contact">Contact Us</a>
+
+        </nav>
+
+
+        <a href="#join" class="nav-cta">
+            Join GMNOA
+        </a>
+
+
+        <button
+            class="menu-btn"
+            id="menuBtn"
+            aria-label="Open menu"
+        >
+            ☰
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     MOBILE MENU
+========================================================= -->
+
+<div class="mobile-menu" id="mobileMenu">
+
+    <div class="mobile-menu-header">
+
+        <a href="#home" class="brand">
+
+            <div class="brand-mark">
+                <img src="/assets/images/Asset%202.svg" alt="GMNOA logo">
+            </div>
+
+            <div class="brand-text">
+
+                <strong>GMNOA</strong>
+
+                <small>
+                    Merchant Navy Officers
+                </small>
+
+            </div>
+
+        </a>
+
+        <button
+            class="close-menu"
+            id="closeMenu"
+            aria-label="Close menu"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+    <nav class="mobile-links">
+
+        <a href="#home">Home</a>
+
+        <a href="#about">About US</a>
+
+        <a href="#leadership">Leadership</a>
+
+        <a href="#blogs">Blogs</a>
+
+        <a href="#events">Events</a>
+
+        <a href="#join">Join Us</a>
+
+        <a href="#mentorship">Mentorship</a>
+
+        <a href="#contact">Contact Us</a>
+
+    </nav>
+
+</div>
+
+
+<!-- =========================================================
+     HOME / HERO
+========================================================= -->
+
+<section class="hero" id="home">
+
+    <div class="container">
+
+        <div class="hero-content reveal">
+
+            <div class="hero-kicker">
+
+                <span></span>
+
+                Ghana's Maritime Professionals
+
+            </div>
+
+
+            <h1>
+                One association.
+                <em>One maritime community.</em>
+            </h1>
+
+
+            <p class="hero-description">
+
+                The Ghana Merchant Navy Officers' Association is committed
+                to promoting professionalism, unity, welfare, mentorship
+                and excellence among merchant navy officers and advancing
+                Ghana's maritime community.
+
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <a
+                    href="#about"
+                    class="btn btn-primary"
+                >
+                    Discover GMNOA →
+                </a>
+
+
+                <a
+                    href="#join"
+                    class="btn btn-light"
+                >
+                    Become a Member
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-info">
+
+        <div>
+
+            <strong>GMNOA</strong>
+
+            <span>
+                Professional Association
+            </span>
+
+        </div>
+
+
+        <div>
+
+            <strong>Maritime</strong>
+
+            <span>
+                Industry & Community
+            </span>
+
+        </div>
+
+
+        <div>
+
+            <strong>Excellence</strong>
+
+            <span>
+                Our Professional Standard
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     ABOUT
+========================================================= -->
+
+<section class="section about" id="about">
+
+    <div class="container about-grid">
+
+        <div class="about-visual reveal" aria-label="GMNOA branded maritime visual">
+
+            <div class="about-visual-scene">
+
+                <div class="about-orbit"></div>
+
+                <div class="about-float-text top">
+                    GMNOA
+                </div>
+
+                <div class="about-float-text bottom">
+                    GMNOA
+                </div>
+
+                <div class="about-chip">
+                    Maritime
+                </div>
+
+                <div class="about-visual-main">
+                    <span>GMNOA</span>
+                </div>
+
+                <div class="about-visual-badge">
+                    Professionalism. Welfare. Unity.
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="about-content reveal">
+
+            <div class="eyebrow">
+                About GMNOA
+            </div>
+
+
+            <h2>
+                A united voice for Ghana's merchant navy officers.
+            </h2>
+
+
+            <p>
+
+                The Ghana Merchant Navy Officers' Association was established 1970 with 53+ years of 
+                experience. It brings
+                together merchant navy officers and maritime professionals
+                with a shared commitment to professional development,
+                welfare, solidarity and the advancement of Ghana's
+                maritime sector.
+
+            </p>
+
+
+            <p>
+
+                GMNOA provides a platform for members to connect,
+                collaborate, develop professionally and contribute to
+                the growth of the maritime profession.
+
+            </p>
+
+
+            <div class="about-buttons">
+
+                <a
+                    href="#mission"
+                    class="btn btn-primary"
+                >
+                    Our Mission →
+                </a>
+
+                <a
+                    href="#leadership"
+                    class="btn btn-outline"
+                >
+                    Meet Leadership
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     MISSION / OBJECTIVES
+========================================================= -->
+
+<section class="section mission" id="mission">
+
+    <div class="container">
+
+        <div class="mission-heading reveal">
+
+            <div class="eyebrow">
+                Mission & Objectives
+            </div>
+
+
+            <h2 class="section-title">
+                Professionalism, welfare and unity at sea and ashore.
+            </h2>
+
+
+            <p class="section-description">
+
+                GMNOA exists to represent and support merchant navy
+                officers while promoting professional standards and
+                contributing to the development of Ghana's maritime sector.
+
+            </p>
+
+        </div>
+
+
+        <div class="mission-grid">
+
+            <article class="mission-card reveal">
+
+                <div class="card-number">
+                    01 / OBJECTIVE
+                </div>
+
+                <h3>
+                    Promote Professionalism
+                </h3>
+
+                <p>
+
+                    Promote high professional standards, competence,
+                    discipline and ethical conduct among merchant navy
+                    officers.
+
+                </p>
+
+            </article>
+
+
+            <article class="mission-card reveal">
+
+                <div class="card-number">
+                    02 / OBJECTIVE
+                </div>
+
+                <h3>
+                    Protect Members' Welfare
+                </h3>
+
+                <p>
+
+                    Support the welfare, interests and professional
+                    development of members while providing a strong
+                    platform for collective representation.
+
+                </p>
+
+            </article>
+
+
+            <article class="mission-card reveal">
+
+                <div class="card-number">
+                    03 / OBJECTIVE
+                </div>
+
+                <h3>
+                    Build Professional Unity
+                </h3>
+
+                <p>
+
+                    Encourage unity, cooperation, fellowship and mutual
+                    support among merchant navy officers and maritime
+                    professionals.
+
+                </p>
+
+            </article>
+
+
+            <article class="mission-card reveal">
+
+                <div class="card-number">
+                    04 / OBJECTIVE
+                </div>
+
+                <h3>
+                    Advance Maritime Development
+                </h3>
+
+                <p>
+
+                    Contribute to the growth and development of Ghana's
+                    maritime industry through knowledge sharing,
+                    engagement and professional advocacy.
+
+                </p>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     LEADERSHIP
+========================================================= -->
+
+<section class="section leadership" id="leadership">
+
+    <div class="container">
+
+        <div class="section-heading-row reveal">
+
+            <div>
+
+                <div class="eyebrow">
+                    Leadership
+                </div>
+
+
+                <h2 class="section-title">
+                    Experienced professionals. Shared responsibility.
+                </h2>
+
+            </div>
+
+
+            <a
+                href="leadership.html"
+                class="btn btn-outline"
+            >
+                View Leadership →
+            </a>
+
+        </div>
+
+
+        <div class="leadership-grid" id="leadershipGrid">
+
+            <article class="leader-card reveal">
+
+                <img
+                    class="leader-image"
+                    src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=85"
+                    alt="GMNOA President placeholder"
+                >
+
+                <div class="leader-body">
+
+                    <div class="leader-role">
+                        President
+                    </div>
+
+                    <h3 class="leader-name">
+                        Leadership Profile
+                    </h3>
+
+                    <p>
+                        Official leadership information will be managed
+                        through the GMNOA administration.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="leader-card reveal">
+
+                <img
+                    class="leader-image"
+                    src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=900&q=85"
+                    alt="GMNOA Vice President placeholder"
+                >
+
+                <div class="leader-body">
+
+                    <div class="leader-role">
+                        Vice President
+                    </div>
+
+                    <h3 class="leader-name">
+                        Leadership Profile
+                    </h3>
+
+                    <p>
+                        Official leadership information will be managed
+                        through the GMNOA administration.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="leader-card reveal">
+
+                <img
+                    class="leader-image"
+                    src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=900&q=85"
+                    alt="GMNOA Secretary placeholder"
+                >
+
+                <div class="leader-body">
+
+                    <div class="leader-role">
+                        General Secretary
+                    </div>
+
+                    <h3 class="leader-name">
+                        Leadership Profile
+                    </h3>
+
+                    <p>
+                        Official leadership information will be managed
+                        through the GMNOA administration.
+                    </p>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     BLOGS
+========================================================= -->
+
+<section class="section blogs" id="blogs">
+
+    <div class="container">
+
+        <div class="section-heading-row reveal">
+
+            <div>
+
+                <div class="eyebrow">
+                    GMNOA Blog
+                </div>
+
+
+                <h2 class="section-title">
+                    Insights from the maritime community.
+                </h2>
+
+            </div>
+
+
+            <a
+                href="blog.html"
+                class="btn btn-outline"
+            >
+                View All Blogs →
+            </a>
+
+        </div>
+
+
+        <div class="blog-grid" id="blogGrid">
+
+            <article class="blog-card reveal">
+
+                <img
+                    class="blog-image"
+                    src="https://images.unsplash.com/photo-1494412651409-8963ce7935a7?auto=format&fit=crop&w=1000&q=85"
+                    alt="Merchant ship"
+                >
+
+                <div class="blog-body">
+
+                    <div class="blog-meta">
+                        Maritime
+                    </div>
+
+                    <h3>
+                        The Future of Ghana's Maritime Profession
+                    </h3>
+
+                    <p>
+                        Explore developments, opportunities and the
+                        changing landscape of Ghana's maritime industry.
+                    </p>
+
+                    <a
+                        href="#"
+                        class="read-more"
+                    >
+                        Read Article →
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <article class="blog-card reveal">
+
+                <img
+                    class="blog-image"
+                    src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1000&q=85"
+                    alt="Maritime professionals"
+                >
+
+                <div class="blog-body">
+
+                    <div class="blog-meta">
+                        Professional Development
+                    </div>
+
+                    <h3>
+                        Building Excellence Through Continuous Learning
+                    </h3>
+
+                    <p>
+                        Why continuous professional development matters
+                        for today's maritime officer.
+                    </p>
+
+                    <a
+                        href="#"
+                        class="read-more"
+                    >
+                        Read Article →
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <article class="blog-card reveal">
+
+                <img
+                    class="blog-image"
+                    src="https://images.unsplash.com/photo-1494412574643-ff11b0a7c1c3?auto=format&fit=crop&w=1000&q=85"
+                    alt="Cargo vessel"
+                >
+
+                <div class="blog-body">
+
+                    <div class="blog-meta">
+                        GMNOA News
+                    </div>
+
+                    <h3>
+                        Strengthening Our Maritime Community
+                    </h3>
+
+                    <p>
+                        Updates and stories from GMNOA and the wider
+                        maritime community.
+                    </p>
+
+                    <a
+                        href="#"
+                        class="read-more"
+                    >
+                        Read Article →
+                    </a>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     EVENTS
+========================================================= -->
+
+<section class="section events" id="events">
+
+    <div class="container">
+
+        <div class="section-heading-row reveal">
+
+            <div>
+
+                <div class="eyebrow">
+                    Events
+                </div>
+
+
+                <h2 class="section-title">
+                    Connect. Learn. Participate.
+                </h2>
+
+            </div>
+
+
+            <a
+                href="events.html"
+                class="btn btn-outline"
+            >
+                View All Events →
+            </a>
+
+        </div>
+
+
+        <div class="events-grid" id="eventsGrid">
+
+            <article class="event-card reveal">
+
+                <img
+                    class="event-image"
+                    src="https://images.unsplash.com/photo-1494412651409-8963ce7935a7?auto=format&fit=crop&w=1200&q=85"
+                    alt="Maritime event"
+                >
+
+                <div class="event-overlay">
+
+                    <div class="event-date">
+                        Upcoming Event
+                    </div>
+
+                    <h3>
+                        Professional Maritime Engagement
+                    </h3>
+
+                    <p>
+                        GMNOA activities and professional engagements
+                        will be published here.
+                    </p>
+
+                    <button
+                        type="button"
+                        class="event-link"
+                    >
+                        Event details available soon
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <article class="event-card reveal">
+
+                <img
+                    class="event-image"
+                    src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=85"
+                    alt="Professional meeting"
+                >
+
+                <div class="event-overlay">
+
+                    <div class="event-date">
+                        Association Event
+                    </div>
+
+                    <h3>
+                        Maritime Professionals Forum
+                    </h3>
+
+                    <p>
+                        A platform for professional discussion,
+                        networking and knowledge sharing.
+                    </p>
+
+                    <button
+                        type="button"
+                        class="event-link"
+                    >
+                        Event details available soon
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <article class="event-card reveal">
+
+                <img
+                    class="event-image"
+                    src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1200&q=85"
+                    alt="Conference"
+                >
+
+                <div class="event-overlay">
+
+                    <div class="event-date">
+                        Community
+                    </div>
+
+                    <h3>
+                        GMNOA Professional Development Programme
+                    </h3>
+
+                    <p>
+                        Programmes focused on learning, mentorship and
+                        professional development.
+                    </p>
+
+                    <button
+                        type="button"
+                        class="event-link"
+                    >
+                        Event details available soon
+                    </button>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     JOIN US
+========================================================= -->
+
+<section class="section join" id="join">
+
+    <div class="container join-inner">
+
+        <div class="join-content reveal">
+
+            <div class="eyebrow">
+                Join GMNOA
+            </div>
+
+
+            <h2>
+                Your profession is stronger when we stand together.
+            </h2>
+
+
+            <p>
+
+                Become part of a professional community committed to
+                supporting merchant navy officers, developing future
+                maritime professionals and strengthening Ghana's maritime
+                sector.
+
+            </p>
+
+        </div>
+
+
+        <div class="join-action reveal">
+
+            <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSdVZOP4jz60vqR0jqVrSYb4OSwk1rFmv8GHudQ4hpeF5i28iQ/viewform?usp=send_form"
+                class="btn"
+                id="joinLink"
+            >
+                Membership Enquiry →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     MENTORSHIP
+========================================================= -->
+
+<section
+    class="section mentorship"
+    id="mentorship"
+>
+
+    <div class="container mentorship-grid">
+
+        <div class="mentorship-image reveal">
+
+            <div class="mentorship-badge">
+
+                <strong>
+                    Mentorship at GMNOA
+                </strong>
+
+                <span>
+                    Connecting experience with the next generation.
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="mentorship-content reveal">
+
+            <div class="eyebrow">
+                Mentorship
+            </div>
+
+
+            <h2>
+                Experience that helps the next generation move forward.
+            </h2>
+
+
+            <p>
+
+                GMNOA's mentorship initiative is designed to encourage
+                knowledge sharing, professional guidance and meaningful
+                connections between experienced maritime officers and
+                emerging professionals.
+
+            </p>
+
+
+            <ul class="mentorship-list">
+
+                <li>
+                    Professional guidance from experienced officers
+                </li>
+
+                <li>
+                    Career development and industry insights
+                </li>
+
+                <li>
+                    Knowledge sharing and networking
+                </li>
+
+                <li>
+                    Support for emerging maritime professionals
+                </li>
+
+            </ul>
+
+
+            <div style="margin-top:30px;">
+
+                <a
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSc98OPzMFUoR-mYh_eXWxynBmZIpy6uC6bQiM-d6UuA4mB32A/viewform"
+                    class="btn btn-primary"
+                    id="mentorshipLink"
+                >
+                    Learn About Mentorship →
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CONTACT
+========================================================= -->
+
+<section class="section contact" id="contact">
+
+    <div class="container contact-grid">
+
+        <div class="contact-info reveal">
+
+            <div class="eyebrow">
+                Contact Us
+            </div>
+
+
+            <h2>
+                Let's stay connected.
+            </h2>
+
+
+            <p>
+
+                Have a question about GMNOA, membership, mentorship or
+                an upcoming event? Get in touch with the association.
+
+            </p>
+
+
+            <div class="contact-details">
+
+                <div class="contact-detail">
+
+                    <div class="contact-icon">
+                        ✉
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Email
+                        </strong>
+
+                        <span>
+                            gmnoa_itfgh@yahoo.co.uk
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="contact-detail">
+
+                    <div class="contact-icon">
+                        ☎
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Phone
+                        </strong>
+
+                        <span>
+                            +233 591-815-929
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="contact-detail">
+
+                    <div class="contact-icon">
+                        ◉
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Location
+                        </strong>
+
+                        <span>
+                            Ghana
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <form
+            class="contact-form reveal"
+            id="contactForm"
+        >
+
+            <div class="form-grid">
+
+                <div
+                    class="security-field"
+                    aria-hidden="true"
+                >
+
+                    <label for="company">
+                        Company
+                    </label>
+
+                    <input
+                        type="text"
+                        id="company"
+                        name="company"
+                        tabindex="-1"
+                        autocomplete="off"
+                    >
+
+                    <input
+                        type="hidden"
+                        id="contactStartedAt"
+                        name="contact_started_at"
+                        value=""
+                    >
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Your full name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="you@example.com"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group full">
+
+                    <label for="subject">
+                        Subject
+                    </label>
+
+                    <input
+                        type="text"
+                        id="subject"
+                        name="subject"
+                        placeholder="How can we help?"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group full">
+
+                    <label for="message">
+                        Message
+                    </label>
+
+                    <textarea
+                        id="message"
+                        name="message"
+                        placeholder="Write your message..."
+                        required
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="btn"
+            >
+                Send Message →
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <div class="footer-brand">
+
+                <a
+                    href="#home"
+                    class="brand"
+                >
+
+                    <div class="brand-mark">
+                        <img src="/assets/images/Asset%202.svg" alt="GMNOA logo">
+                    </div>
+
+                    <div class="brand-text">
+
+                        <strong style="color:white;">
+                            GMNOA
+                        </strong>
+
+                        <small style="color:rgba(255,255,255,.45);">
+                            Ghana Merchant Navy Officers' Association
+                        </small>
+
+                    </div>
+
+                </a>
+
+
+                <p>
+
+                    Promoting professionalism, unity, welfare,
+                    mentorship and excellence within Ghana's maritime
+                    community.
+
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <div class="footer-title">
+                    Explore
+                </div>
+
+                <div class="footer-links">
+
+                    <a href="#home">Home</a>
+
+                    <a href="#about">About</a>
+
+                    <a href="#leadership">Leadership</a>
+
+                    <a href="#blogs">Blogs</a>
+
+                </div>
+
+            </div>
+
+
+            <div>
+
+                <div class="footer-title">
+                    Community
+                </div>
+
+                <div class="footer-links">
+
+                    <a href="#events">Events</a>
+
+                    <a href="#join">Join Us</a>
+
+                    <a href="#mentorship">Mentorship</a>
+
+                    <a href="#contact">Contact Us</a>
+
+                </div>
+
+            </div>
+
+
+            <div>
+
+                <div class="footer-title">
+                    Contact
+                </div>
+
+                <div class="footer-links">
+
+                    <a href="mailto:info@gmnoa.org">
+                        gmnoa_itfgh@yahoo.co.uk
+                    </a>
+
+                    <a href="#">
+                        Ghana
+                    </a>
+
+                    <a href="#contact">
+                        Send a Message
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div>
+
+                <div class="footer-title">
+                    Social
+                </div>
+
+                <div class="footer-links">
+
+                    <a
+                        href="https://www.instagram.com/gmnoa.official?igsh=eWU0ODBmMDc4aXRi"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Instagram
+                    </a>
+
+                    <a
+                        href="https://web.facebook.com/people/GMNOA-Ghana-Merchant-Navy-Officers-Association/100083388254741/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Facebook
+                    </a>
+
+                    <a
+                        href="https://www.linkedin.com/in/ghana-merchant-navy-officers-association-273269276/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        LinkedIn
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © <span id="year"></span>
+                Ghana Merchant Navy Officers' Association.
+            </span>
+
+            <span>
+                Brother's Keeper, Sister's Anchor.
+            </span>
+
+            <div class="footer-affiliation">
+
+                <a
+                    href="https://picarview.com"
+                    class="picarview-affiliation"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Visit PICARVIEW"
+                >
+
+                    <span class="picarview-logo">
+
+                        <img
+                            src="/assets/images/picarview%20affiliation.jpeg"
+                            alt="PICARVIEW logo"
+                        >
+
+                    </span>
+
+                    <span>
+                        Created by picarview
+                    </span>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script type="module">
+
+    import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+
+
+    const SUPABASE_URL =
+        "https://lnctolzzigpsjsvhtxwe.supabase.co";
+
+    const SUPABASE_PUBLISHABLE_KEY =
+        "sb_publishable_O_JT8-AD_heentaVPRdXEQ_x9zCoDtt";
+
+    const supabaseClient =
+        createClient(
+            SUPABASE_URL,
+            SUPABASE_PUBLISHABLE_KEY
+        );
+
+
+    const FALLBACK_IMAGES = {
+        leader:
+            "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=85",
+        blog:
+            "https://images.unsplash.com/photo-1494412651409-8963ce7935a7?auto=format&fit=crop&w=1000&q=85",
+        event:
+            "https://images.unsplash.com/photo-1494412651409-8963ce7935a7?auto=format&fit=crop&w=1200&q=85"
+    };
+
+    const STORAGE_BUCKET =
+        "gmnoa-images";
+
+    const MEMBERSHIP_FORM_LINK =
+        "https://docs.google.com/forms/d/e/1FAIpQLSdVZOP4jz60vqR0jqVrSYb4OSwk1rFmv8GHudQ4hpeF5i28iQ/viewform?usp=send_form";
+
+    const MENTORSHIP_FORM_LINK =
+        "https://docs.google.com/forms/d/e/1FAIpQLSc98OPzMFUoR-mYh_eXWxynBmZIpy6uC6bQiM-d6UuA4mB32A/viewform";
+
+    let publicEvents =
+        [];
+
+
+    /* =========================================================
+       MOBILE MENU
+    ========================================================= */
+
+    const menuBtn =
+        document.getElementById("menuBtn");
+
+    const closeMenu =
+        document.getElementById("closeMenu");
+
+    const mobileMenu =
+        document.getElementById("mobileMenu");
+
+
+    menuBtn.addEventListener("click", () => {
+
+        mobileMenu.classList.add("active");
+
+        document.body.style.overflow = "hidden";
+
+    });
+
+
+    closeMenu.addEventListener("click", () => {
+
+        mobileMenu.classList.remove("active");
+
+        document.body.style.overflow = "";
+
+    });
+
+
+    document
+        .querySelectorAll(".mobile-links a")
+        .forEach(link => {
+
+            link.addEventListener("click", () => {
+
+                mobileMenu.classList.remove("active");
+
+                document.body.style.overflow = "";
+
+            });
+
+        });
+
+
+    /* =========================================================
+       SCROLL REVEAL
+    ========================================================= */
+
+    const revealElements =
+        document.querySelectorAll(".reveal");
+
+
+    const observer =
+        new IntersectionObserver(
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add("visible");
+
+                        observer.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.12
+            }
+        );
+
+
+    revealElements.forEach(element => {
+
+        observer.observe(element);
+
+    });
+
+
+    /* =========================================================
+       ABOUT VISUAL INTERACTION
+    ========================================================= */
+
+    const aboutVisual =
+        document.querySelector(".about-visual");
+
+
+    if (aboutVisual) {
+
+        aboutVisual.addEventListener("pointermove", event => {
+
+            const rect =
+                aboutVisual.getBoundingClientRect();
+
+            const x =
+                (event.clientX - rect.left) / rect.width;
+
+            const y =
+                (event.clientY - rect.top) / rect.height;
+
+
+            aboutVisual.style.setProperty(
+                "--tilt-y",
+                `${(x - 0.5) * 10}deg`
+            );
+
+            aboutVisual.style.setProperty(
+                "--tilt-x",
+                `${(0.5 - y) * 10}deg`
+            );
+
+            aboutVisual.style.setProperty(
+                "--glow-x",
+                `${x * 100}%`
+            );
+
+            aboutVisual.style.setProperty(
+                "--glow-y",
+                `${y * 100}%`
+            );
+
+        });
+
+
+        aboutVisual.addEventListener("pointerleave", () => {
+
+            aboutVisual.style.setProperty(
+                "--tilt-x",
+                "0deg"
+            );
+
+            aboutVisual.style.setProperty(
+                "--tilt-y",
+                "0deg"
+            );
+
+            aboutVisual.style.setProperty(
+                "--glow-x",
+                "50%"
+            );
+
+            aboutVisual.style.setProperty(
+                "--glow-y",
+                "35%"
+            );
+
+        });
+
+    }
+
+
+    /* =========================================================
+       CURRENT YEAR
+    ========================================================= */
+
+    document.getElementById("year").textContent =
+        new Date().getFullYear();
+
+
+    /* =========================================================
+       PUBLIC DATABASE CONTENT
+    ========================================================= */
+
+    loadPublicContent();
+
+
+    async function loadPublicContent() {
+
+        const [
+            settingsResult,
+            leadersResult,
+            postsResult,
+            eventsResult
+        ] =
+            await Promise.allSettled([
+                loadSiteSettings(),
+                loadTeamMembers(),
+                loadBlogPosts(),
+                loadEvents()
+            ]);
+
+
+        renderIfFulfilled(settingsResult);
+        renderIfFulfilled(leadersResult);
+        renderIfFulfilled(postsResult);
+        renderIfFulfilled(eventsResult);
+
+    }
+
+
+    function renderIfFulfilled(result) {
+
+        if (result.status === "rejected") {
+            console.warn(result.reason);
+        }
+
+    }
+
+
+    async function loadSiteSettings() {
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+                .from("site_settings")
+                .select("setting_key, setting_value");
+
+
+        if (error) {
+            throw error;
+        }
+
+
+        const settings =
+            Object.fromEntries(
+                (data || []).map(
+                    item => [
+                        item.setting_key,
+                        item.setting_value
+                    ]
+                )
+            );
+
+
+        document.getElementById("joinLink").href =
+            MEMBERSHIP_FORM_LINK;
+
+
+        document.getElementById("mentorshipLink").href =
+            MENTORSHIP_FORM_LINK;
+
+    }
+
+
+    async function loadTeamMembers() {
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+                .from("team_members")
+                .select("full_name, position, bio, image_url, email, display_order, is_active")
+                .eq("is_active", true)
+                .order("display_order", {
+                    ascending: true
+                })
+                .order("created_at", {
+                    ascending: false
+                })
+                .limit(6);
+
+
+        if (error) {
+            throw error;
+        }
+
+
+        if (!data?.length) {
+            return;
+        }
+
+
+        const leaders =
+            await Promise.all(
+                data.map(resolveLeaderImage)
+            );
+
+
+        document.getElementById("leadershipGrid").innerHTML =
+            leaders.map(renderLeaderCard).join("");
+
+    }
+
+
+    async function loadBlogPosts() {
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+                .from("blog_posts")
+                .select("*")
+                .eq("status", "published")
+                .order("published_at", {
+                    ascending: false,
+                    nullsFirst: false
+                })
+                .order("created_at", {
+                    ascending: false
+                })
+                .limit(3);
+
+
+        if (error) {
+            throw error;
+        }
+
+
+        if (!data?.length) {
+            return;
+        }
+
+
+        const posts =
+            await Promise.all(
+                data.map(resolveBlogPostImage)
+            );
+
+
+        document.getElementById("blogGrid").innerHTML =
+            posts.map(renderBlogCard).join("");
+
+    }
+
+
+    async function loadEvents() {
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+                .from("events")
+                .select("*")
+                .in("status", [
+                    "upcoming",
+                    "ongoing",
+                    "completed"
+                ])
+                .order("event_date", {
+                    ascending: true
+                })
+                .limit(3);
+
+
+        if (error) {
+            throw error;
+        }
+
+
+        if (!data?.length) {
+            return;
+        }
+
+
+        const events =
+            await Promise.all(
+                data.map(resolveEventImage)
+            );
+
+
+        publicEvents =
+            events;
+
+
+        document.getElementById("eventsGrid").innerHTML =
+            publicEvents.map(renderEventCard).join("");
+
+
+        bindEventDetailButtons();
+
+    }
+
+
+    function renderLeaderCard(leader) {
+
+        return `
+            <article class="leader-card reveal visible">
+                <img
+                    class="leader-image"
+                    src="${escapeHTML(leaderImageUrl(leader))}"
+                    alt="${escapeHTML(leader.full_name || "GMNOA leader")}"
+                >
+                <div class="leader-body">
+                    <div class="leader-role">
+                        ${escapeHTML(leader.position || "Leadership")}
+                    </div>
+                    <h3 class="leader-name">
+                        ${escapeHTML(leader.full_name || "Leadership Profile")}
+                    </h3>
+                    <p>
+                        ${escapeHTML(leader.bio || "Official GMNOA leadership profile.")}
+                    </p>
+                </div>
+            </article>
+        `;
+
+    }
+
+
+    function leaderImageUrl(leader) {
+
+        return leader.resolved_leader_image_url ||
+            leader.image_url ||
+            FALLBACK_IMAGES.leader;
+
+    }
+
+
+    async function resolveLeaderImage(leader) {
+
+        return {
+            ...leader,
+            resolved_leader_image_url:
+                await resolveStorageImageUrl(
+                    leader.image_url,
+                    FALLBACK_IMAGES.leader
+                )
+        };
+
+    }
+
+
+    function renderBlogCard(post) {
+
+        const text =
+            post.excerpt ||
+            trimText(post.content, 150) ||
+            "Read the latest update from the GMNOA maritime community.";
+
+
+        return `
+            <article class="blog-card reveal visible">
+                <img
+                    class="blog-image"
+                    src="${escapeHTML(blogImageUrl(post))}"
+                    alt="${escapeHTML(post.title || "GMNOA blog post")}"
+                >
+                <div class="blog-body">
+                    <div class="blog-meta">
+                        ${escapeHTML(post.category || formatDate(post.published_at || post.created_at))}
+                    </div>
+                    <h3>
+                        ${escapeHTML(post.title || "GMNOA Update")}
+                    </h3>
+                    <p>
+                        ${escapeHTML(text)}
+                    </p>
+                    <a
+                        href="${escapeHTML(blogPostHref(post))}"
+                        class="read-more"
+                    >
+                        Read Article →
+                    </a>
+                </div>
+            </article>
+        `;
+
+    }
+
+
+    function blogImageUrl(post) {
+
+        return post.resolved_blog_image_url ||
+            post.featured_image_url ||
+            post.image_url ||
+            FALLBACK_IMAGES.blog;
+
+    }
+
+
+    async function resolveBlogPostImage(post) {
+
+        return {
+            ...post,
+            resolved_blog_image_url:
+                await resolveStorageImageUrl(
+                    post.featured_image_url ||
+                    post.image_url,
+                    FALLBACK_IMAGES.blog
+                )
+        };
+
+    }
+
+
+    async function resolveStorageImageUrl(
+        url,
+        fallbackImage = FALLBACK_IMAGES.blog
+    ) {
+
+        const storagePath =
+            storagePathFromImageUrl(url);
+
+
+        if (!storagePath) {
+            return url || fallbackImage;
+        }
+
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+                .storage
+                .from(STORAGE_BUCKET)
+                .createSignedUrl(
+                    storagePath,
+                    60 * 60
+                );
+
+
+        if (error || !data?.signedUrl) {
+            return url || fallbackImage;
+        }
+
+
+        return data.signedUrl;
+
+    }
+
+
+    function storagePathFromImageUrl(url) {
+
+        if (!url) {
+            return "";
+        }
+
+
+        const value =
+            String(url).trim();
+
+
+        if (
+            value.startsWith("blogs/") ||
+            value.startsWith("site/") ||
+            value.startsWith("events/") ||
+            value.startsWith("leaders/")
+        ) {
+            return value;
+        }
+
+
+        try {
+
+            const parsed =
+                new URL(value);
+
+            const markers = [
+                `/storage/v1/object/public/${STORAGE_BUCKET}/`,
+                `/storage/v1/object/sign/${STORAGE_BUCKET}/`,
+                `/storage/v1/object/${STORAGE_BUCKET}/`
+            ];
+
+
+            for (const marker of markers) {
+
+                const index =
+                    parsed.pathname.indexOf(marker);
+
+                if (index !== -1) {
+                    return decodeURIComponent(
+                        parsed.pathname.slice(
+                            index + marker.length
+                        )
+                    );
+                }
+
+            }
+
+        }
+
+        catch {
+            return "";
+        }
+
+
+        return "";
+
+    }
+
+
+    function renderEventCard(event, index) {
+
+        return `
+            <article class="event-card reveal visible">
+                <img
+                    class="event-image"
+                    src="${escapeHTML(eventImageUrl(event))}"
+                    alt="${escapeHTML(event.title || "GMNOA event")}"
+                >
+                <div class="event-overlay">
+                    <div class="event-date">
+                        ${escapeHTML(formatDate(event.event_date))}
+                    </div>
+                    <h3>
+                        ${escapeHTML(event.title || "GMNOA Event")}
+                    </h3>
+                    <p>
+                        ${escapeHTML(event.description || event.location || "GMNOA event details will be shared here.")}
+                    </p>
+                    <button
+                        type="button"
+                        class="event-link"
+                        data-event-modal-trigger="${index}"
+                    >
+                        View full details
+                    </button>
+                </div>
+            </article>
+        `;
+
+    }
+
+
+    function bindEventDetailButtons() {
+
+        document
+            .querySelectorAll("[data-event-modal-trigger]")
+            .forEach(button => {
+
+                button.addEventListener("click", () => {
+
+                    openEventDetailsModal(
+                        publicEvents[
+                            Number(button.dataset.eventModalTrigger)
+                        ]
+                    );
+
+                });
+
+            });
+
+    }
+
+
+    function openEventDetailsModal(event) {
+
+        if (!event) {
+            return;
+        }
+
+
+        const modal =
+            ensureEventDetailsModal();
+
+        const details =
+            event.content ||
+            event.description ||
+            "Full event details will be shared soon.";
+
+        const hasRegistration =
+            Boolean(safeHref(event.registration_link, ""));
+
+
+        modal.querySelector("[data-event-modal-content]").innerHTML = `
+            <article class="event-modal-card" role="dialog" aria-modal="true" aria-labelledby="eventModalTitle">
+                <button
+                    type="button"
+                    class="event-modal-close"
+                    data-event-modal-close
+                    aria-label="Close event details"
+                >
+                    &times;
+                </button>
+                <img
+                    class="event-modal-image"
+                    src="${escapeHTML(eventImageUrl(event))}"
+                    alt="${escapeHTML(event.title || "GMNOA event")}"
+                >
+                <div class="event-modal-body">
+                    <div class="event-date">
+                        ${escapeHTML(formatDate(event.event_date))}
+                    </div>
+                    <h3 id="eventModalTitle">
+                        ${escapeHTML(event.title || "GMNOA Event")}
+                    </h3>
+                    <div class="event-detail-row">
+                        <span class="event-detail-label">Date</span>
+                        ${escapeHTML(formatDate(event.event_date))}
+                        ${event.end_date ? ` - ${escapeHTML(formatDate(event.end_date))}` : ""}
+                    </div>
+                    ${event.location ? `<div class="event-detail-row">
+                        <span class="event-detail-label">Location</span>
+                        ${escapeHTML(event.location)}
+                    </div>` : ""}
+                    <div class="event-detail-row">
+                        <span class="event-detail-label">Details</span>
+                        ${escapeHTML(details)}
+                    </div>
+                    ${hasRegistration ? `<a
+                        class="event-register-link"
+                        href="${escapeHTML(safeHref(event.registration_link, "#events"))}"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        Registration link
+                    </a>` : ""}
+                </div>
+            </article>
+        `;
+
+        modal.hidden =
+            false;
+
+        document.body.style.overflow =
+            "hidden";
+
+        modal
+            .querySelector("[data-event-modal-close]")
+            ?.focus();
+
+    }
+
+
+    function ensureEventDetailsModal() {
+
+        let modal =
+            document.getElementById("eventDetailsModal");
+
+
+        if (modal) {
+            return modal;
+        }
+
+
+        modal =
+            document.createElement("div");
+
+        modal.id =
+            "eventDetailsModal";
+
+        modal.className =
+            "event-modal-backdrop";
+
+        modal.hidden =
+            true;
+
+        modal.innerHTML =
+            `<div data-event-modal-content></div>`;
+
+        document.body.appendChild(modal);
+
+
+        modal.addEventListener("click", event => {
+
+            if (
+                event.target === modal ||
+                event.target.closest("[data-event-modal-close]")
+            ) {
+                closeEventDetailsModal();
+            }
+
+        });
+
+
+        document.addEventListener("keydown", event => {
+
+            if (
+                event.key === "Escape" &&
+                !modal.hidden
+            ) {
+                closeEventDetailsModal();
+            }
+
+        });
+
+
+        return modal;
+
+    }
+
+
+    function closeEventDetailsModal() {
+
+        const modal =
+            document.getElementById("eventDetailsModal");
+
+
+        if (!modal) {
+            return;
+        }
+
+
+        modal.hidden =
+            true;
+
+        document.body.style.overflow =
+            "";
+
+    }
+
+
+    function eventImageUrl(event) {
+
+        return event.resolved_event_image_url ||
+            event.image_url ||
+            FALLBACK_IMAGES.event;
+
+    }
+
+
+    async function resolveEventImage(event) {
+
+        return {
+            ...event,
+            resolved_event_image_url:
+                await resolveStorageImageUrl(
+                    event.image_url,
+                    FALLBACK_IMAGES.event
+                )
+        };
+
+    }
+
+
+    function blogPostHref(post) {
+
+        const slug =
+            post.slug ||
+            "";
+
+
+        if (slug) {
+            return `blog.html?slug=${encodeURIComponent(slug)}`;
+        }
+
+        if (post.id) {
+            return `blog.html?id=${encodeURIComponent(post.id)}`;
+        }
+
+
+        return "#blogs";
+
+    }
+
+
+    /* =========================================================
+       ACTIVE NAVIGATION
+    ========================================================= */
+
+    const sections =
+        document.querySelectorAll("section[id]");
+
+    const navLinks =
+        document.querySelectorAll(".nav-links a");
+
+
+    const sectionObserver =
+        new IntersectionObserver(
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (!entry.isIntersecting) {
+                        return;
+                    }
+
+
+                    const id =
+                        entry.target.getAttribute("id");
+
+
+                    navLinks.forEach(link => {
+
+                        link.classList.remove(
+                            "active"
+                        );
+
+
+                        if (
+                            link.getAttribute("href")
+                            === "#" + id
+                        ) {
+
+                            link.classList.add(
+                                "active"
+                            );
+
+                        }
+
+                    });
+
+                });
+
+            },
+            {
+                rootMargin: "-35% 0px -55% 0px"
+            }
+        );
+
+
+    sections.forEach(section => {
+
+        sectionObserver.observe(section);
+
+    });
+
+
+    /* =========================================================
+       CONTACT FORM
+       TEMPORARY FRONTEND BEHAVIOUR
+    ========================================================= */
+
+    const contactForm =
+        document.getElementById("contactForm");
+
+    const CONTACT_RATE_LIMIT_KEY =
+        "gmnoa_contact_last_submit";
+
+    const CONTACT_RATE_LIMIT_MS =
+        60 * 1000;
+
+    const CONTACT_MIN_COMPLETION_MS =
+        3000;
+
+    const contactStartedAt =
+        document.getElementById("contactStartedAt");
+
+    if (contactStartedAt) {
+        contactStartedAt.value =
+            String(Date.now());
+    }
+
+
+    function getTrimmedField(formData, name) {
+        return String(formData.get(name) || "").trim();
+    }
+
+
+    function isLikelySpam(formData) {
+        const honeypot =
+            getTrimmedField(formData, "company");
+
+        const startedAt =
+            Number(formData.get("contact_started_at") || 0);
+
+        const submittedTooFast =
+            !startedAt ||
+            Date.now() - startedAt < CONTACT_MIN_COMPLETION_MS;
+
+        const lastSubmit =
+            Number(localStorage.getItem(CONTACT_RATE_LIMIT_KEY) || 0);
+
+        const submittedTooOften =
+            Date.now() - lastSubmit < CONTACT_RATE_LIMIT_MS;
+
+        return Boolean(honeypot) || submittedTooFast || submittedTooOften;
+    }
+
+
+    async function submitContactMessage(payload) {
+        let fatalError = null;
+
+        try {
+
+            const response =
+                await fetch(
+                    "/api/contact-message",
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(payload)
+                    }
+                );
+
+
+            const result =
+                await response.json().catch(() => ({}));
+
+
+            if (response.ok && result.success) {
+                return;
+            }
+
+
+            if (![404, 405, 500].includes(response.status)) {
+                fatalError = new Error(
+                    result.error ||
+                    "Unable to send this message right now."
+                );
+
+                throw fatalError;
+            }
+
+        }
+
+        catch (error) {
+            if (error === fatalError) {
+                throw error;
+            }
+
+            console.warn(
+                "Contact API unavailable, trying direct Supabase insert.",
+                error
+            );
+        }
+
+
+        const {
+            error
+        } =
+            await supabaseClient
+                .from("contact_messages")
+                .insert([
+                    {
+                        full_name:
+                            payload.full_name,
+                        email:
+                            payload.email,
+                        subject:
+                            payload.subject,
+                        message:
+                            payload.message
+                    }
+                ]);
+
+
+        if (error) {
+            throw error;
+        }
+    }
+
+
+    contactForm.addEventListener(
+        "submit",
+        async event => {
+
+            event.preventDefault();
+
+
+            const button =
+                contactForm.querySelector("button");
+
+
+            const originalText =
+                button.textContent;
+
+
+            button.textContent =
+                "Sending...";
+
+
+            button.disabled =
+                true;
+
+
+            const formData =
+                new FormData(contactForm);
+
+
+            if (isLikelySpam(formData)) {
+
+                button.textContent =
+                    "Please wait and try again";
+
+                button.style.background =
+                    "#d93025";
+
+                setTimeout(() => {
+
+                    button.textContent =
+                        originalText;
+
+                    button.style.background =
+                        "";
+
+                    button.disabled =
+                        false;
+
+                }, 3000);
+
+                return;
+
+            }
+
+
+            const payload = {
+                full_name:
+                    getTrimmedField(formData, "name"),
+                email:
+                    getTrimmedField(formData, "email"),
+                subject:
+                    getTrimmedField(formData, "subject"),
+                message:
+                    getTrimmedField(formData, "message"),
+                company:
+                    getTrimmedField(formData, "company"),
+                contact_started_at:
+                    getTrimmedField(formData, "contact_started_at")
+            };
+
+            try {
+
+                await submitContactMessage(payload);
+
+            }
+
+            catch (error) {
+
+                console.error(error);
+
+                button.textContent =
+                    "Please try again";
+
+                button.style.background =
+                    "#d93025";
+
+                setTimeout(() => {
+
+                    button.textContent =
+                        originalText;
+
+                    button.style.background =
+                        "";
+
+                    button.disabled =
+                        false;
+
+                }, 3000);
+
+                return;
+
+            }
+
+
+            button.textContent =
+                "Message Received ✓";
+
+
+            button.style.background =
+                "#007bd1";
+
+
+            contactForm.reset();
+
+            localStorage.setItem(
+                CONTACT_RATE_LIMIT_KEY,
+                String(Date.now())
+            );
+
+            if (contactStartedAt) {
+                contactStartedAt.value =
+                    String(Date.now());
+            }
+
+
+            setTimeout(() => {
+
+                button.textContent =
+                    originalText;
+
+                button.style.background =
+                    "";
+
+                button.disabled =
+                    false;
+
+            }, 3000);
+
+        }
+    );
+
+
+    function escapeHTML(value) {
+
+        return String(value ?? "")
+            .replace(
+                /[&<>"']/g,
+                char =>
+                    ({
+                        "&": "&amp;",
+                        "<": "&lt;",
+                        ">": "&gt;",
+                        '"': "&quot;",
+                        "'": "&#039;"
+                    }[char])
+            );
+
+    }
+
+
+    function cssUrl(value) {
+
+        return String(value ?? "")
+            .replace(
+                /["\\\n\r]/g,
+                ""
+            );
+
+    }
+
+
+    function safeHref(value, fallback = "#") {
+
+        const href =
+            String(value || "").trim();
+
+
+        if (!href) {
+            return fallback;
+        }
+
+
+        if (
+            href.startsWith("#") ||
+            href.startsWith("/") ||
+            href.startsWith("mailto:") ||
+            href.startsWith("tel:")
+        ) {
+            return href;
+        }
+
+
+        try {
+
+            const url =
+                new URL(href);
+
+
+            if (
+                url.protocol === "http:" ||
+                url.protocol === "https:"
+            ) {
+                return href;
+            }
+
+        }
+
+        catch (error) {
+            return fallback;
+        }
+
+
+        return fallback;
+
+    }
+
+
+    function formatDate(value) {
+
+        if (!value) {
+            return "Date to be announced";
+        }
+
+
+        const date =
+            new Date(value);
+
+
+        if (Number.isNaN(date.getTime())) {
+            return "Date to be announced";
+        }
+
+
+        return date.toLocaleDateString(
+            "en-GH",
+            {
+                year: "numeric",
+                month: "short",
+                day: "numeric"
+            }
+        );
+
+    }
+
+
+    function trimText(value, length) {
+
+        const text =
+            String(value || "").trim();
+
+
+        if (text.length <= length) {
+            return text;
+        }
+
+
+        return `${text.slice(0, length).trim()}...`;
+
+    }
+
+</script>
+
+<script type="module" src="/src/js/no-download.js"></script>
+
+
+</body>
+</html>

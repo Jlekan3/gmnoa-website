@@ -3,11 +3,30 @@
 
 grant usage on schema public to anon, authenticated;
 
+create table if not exists public.partners (
+    id uuid not null default gen_random_uuid(),
+    name text not null,
+    website_url text,
+    logo_url text,
+    display_order integer not null default 10,
+    is_active boolean not null default true,
+    created_at timestamp with time zone not null default now(),
+    updated_at timestamp with time zone not null default now(),
+    constraint partners_pkey primary key (id),
+    constraint partners_name_check check (char_length(trim(name)) between 2 and 160),
+    constraint partners_display_order_check check (display_order > 0),
+    constraint partners_website_url_check check (
+        website_url is null
+        or website_url ~* '^https?://'
+    )
+);
+
 grant select on public.team_members to anon, authenticated;
 grant select on public.blog_posts to anon, authenticated;
 grant select on public.events to anon, authenticated;
 grant select on public.mentorship_programs to anon, authenticated;
 grant select on public.site_settings to anon, authenticated;
+grant select on public.partners to anon, authenticated;
 
 grant select, insert, update, delete on public.profiles to authenticated;
 grant select, insert, update, delete on public.team_members to authenticated;
@@ -17,6 +36,7 @@ grant select, insert, update, delete on public.membership_applications to authen
 grant select, insert, update, delete on public.mentorship_programs to authenticated;
 grant select, insert, update, delete on public.contact_messages to authenticated;
 grant select, insert, update, delete on public.site_settings to authenticated;
+grant select, insert, update, delete on public.partners to authenticated;
 
 grant insert on public.membership_applications to anon;
 grant insert on public.contact_messages to anon;
@@ -56,6 +76,7 @@ alter table public.membership_applications enable row level security;
 alter table public.mentorship_programs enable row level security;
 alter table public.contact_messages enable row level security;
 alter table public.site_settings enable row level security;
+alter table public.partners enable row level security;
 alter table public.audit_logs enable row level security;
 
 drop policy if exists "Users can read own profile" on public.profiles;
@@ -74,6 +95,8 @@ drop policy if exists "Anyone can submit valid contact messages" on public.conta
 drop policy if exists "Dashboard users manage contact messages" on public.contact_messages;
 drop policy if exists "Public can read site settings" on public.site_settings;
 drop policy if exists "Dashboard users manage site settings" on public.site_settings;
+drop policy if exists "Public can read active partners" on public.partners;
+drop policy if exists "Dashboard users manage partners" on public.partners;
 drop policy if exists "Dashboard users can read audit logs" on public.audit_logs;
 drop policy if exists "Dashboard users can create audit logs" on public.audit_logs;
 drop policy if exists "Public can view GMNOA images" on storage.objects;
@@ -185,6 +208,19 @@ using (true);
 
 create policy "Dashboard users manage site settings"
 on public.site_settings
+for all
+to authenticated
+using (public.is_dashboard_user())
+with check (public.is_dashboard_user());
+
+create policy "Public can read active partners"
+on public.partners
+for select
+to anon, authenticated
+using (is_active = true);
+
+create policy "Dashboard users manage partners"
+on public.partners
 for all
 to authenticated
 using (public.is_dashboard_user())

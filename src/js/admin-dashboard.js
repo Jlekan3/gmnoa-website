@@ -31,7 +31,8 @@ const STORAGE_BUCKET = "gmnoa-images";
 const STORAGE_FOLDERS = {
     blog: "blogs",
     event: "events",
-    leader: "leaders"
+    leader: "leaders",
+    partner: "partners"
 };
 
 const ALLOWED_STORAGE_FOLDERS =
@@ -95,11 +96,15 @@ let leaders = [];
 
 let contactMessages = [];
 
+let partners = [];
+
 let editingBlogId = null;
 
 let editingEventId = null;
 
 let editingLeaderId = null;
+
+let editingPartnerId = null;
 
 let inactivityTimerId = null;
 
@@ -311,6 +316,8 @@ async function loadEverything() {
         loadEvents(),
 
         loadLeaders(),
+
+        loadPartners(),
 
         loadContactMessages(),
 
@@ -2504,6 +2511,574 @@ async function deleteLeader(
 
 
 /* ==========================================================
+   PARTNERS
+========================================================== */
+
+async function loadPartners() {
+
+    try {
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+                .from(
+                    "partners"
+                )
+                .select("*")
+                .order(
+                    "display_order",
+                    {
+                        ascending:
+                            true
+                    }
+                )
+                .order(
+                    "created_at",
+                    {
+                        ascending:
+                            false
+                    }
+                );
+
+
+        if (error) {
+            throw error;
+        }
+
+
+        partners =
+            await Promise.all(
+                (data || []).map(
+                    resolvePartnerLogo
+                )
+            );
+
+
+        renderPartnersTable();
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        partners = [];
+
+        renderPartnersTable();
+
+    }
+
+}
+
+
+function renderPartnersTable(
+    search = ""
+) {
+
+    const container =
+        document.getElementById(
+            "partnersTable"
+        );
+
+
+    const filtered =
+        orderedPartners(
+            partners
+        ).filter(
+            partner => {
+
+                const text =
+                    `${partner.name || ""} ${partner.website_url || ""}`
+                        .toLowerCase();
+
+
+                return text.includes(
+                    search.toLowerCase()
+                );
+
+            }
+        );
+
+
+    if (!filtered.length) {
+
+        container.innerHTML = `
+
+            <div class="empty">
+
+                <i data-lucide="handshake"></i>
+
+                <h4>
+                    No partners
+                </h4>
+
+                <p>
+                    Add your first partner.
+                </p>
+
+            </div>
+
+        `;
+
+        lucide.createIcons();
+
+        return;
+
+    }
+
+
+    container.innerHTML = `
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Logo</th>
+                    <th>Partner</th>
+                    <th>Website</th>
+                    <th>Order</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                ${filtered.map(
+                    partner => `
+
+                    <tr>
+
+                        <td>
+                            ${
+                                partnerLogoUrl(partner)
+                                    ? `<img
+                                        class="image-thumb"
+                                        src="${escapeHTML(partnerLogoUrl(partner))}"
+                                        alt=""
+                                    >`
+                                    : `<div class="image-thumb"></div>`
+                            }
+                        </td>
+
+                        <td>
+                            <div class="table-title">
+                                ${escapeHTML(partner.name || "Unnamed partner")}
+                            </div>
+                        </td>
+
+                        <td>
+                            ${partner.website_url
+                                ? `<a href="${escapeHTML(partner.website_url)}" target="_blank" rel="noopener">
+                                    ${escapeHTML(trimText(partner.website_url, 42))}
+                                </a>`
+                                : "—"}
+                        </td>
+
+                        <td>
+                            ${escapeHTML(partner.display_order || "—")}
+                        </td>
+
+                        <td>
+                            <span class="status ${statusClass(partnerStatusValue(partner), "active")}">
+                                ${escapeHTML(partnerStatusLabel(partner))}
+                            </span>
+                        </td>
+
+                        <td>
+                            <div class="actions">
+
+                                <button
+                                    class="btn btn-secondary btn-sm"
+                                    onclick="editPartner('${inlineHandlerArg(partner.id)}')"
+                                    aria-label="Edit ${inlineHandlerArg(partner.name || "partner")}"
+                                >
+                                    <i data-lucide="pencil"></i>
+                                </button>
+
+                                <button
+                                    class="btn btn-danger btn-sm"
+                                    onclick="deletePartner('${inlineHandlerArg(partner.id)}')"
+                                    aria-label="Delete ${inlineHandlerArg(partner.name || "partner")}"
+                                >
+                                    <i data-lucide="trash-2"></i>
+                                </button>
+
+                            </div>
+                        </td>
+
+                    </tr>
+
+                `
+                ).join("")}
+
+            </tbody>
+
+        </table>
+
+    `;
+
+
+    lucide.createIcons();
+
+}
+
+
+function openPartnerModal(
+    id = null
+) {
+
+    editingPartnerId =
+        normalizeRecordId(id);
+
+
+    document.getElementById(
+        "partnerForm"
+    ).reset();
+
+
+    document.getElementById(
+        "partnerLogoPreviewContainer"
+    ).style.display =
+        "none";
+
+
+    if (editingPartnerId) {
+
+        const partner =
+            partners.find(
+                item =>
+                    item.id ===
+                    editingPartnerId
+            );
+
+
+        if (!partner) {
+            return;
+        }
+
+
+        document.getElementById(
+            "partnerModalTitle"
+        ).textContent =
+            "Edit Partner";
+
+
+        document.getElementById(
+            "partnerName"
+        ).value =
+            partner.name ||
+            "";
+
+
+        document.getElementById(
+            "partnerWebsite"
+        ).value =
+            partner.website_url ||
+            "";
+
+
+        document.getElementById(
+            "partnerStatus"
+        ).value =
+            partnerStatusValue(partner);
+
+
+        document.getElementById(
+            "partnerDisplayOrder"
+        ).value =
+            partner.display_order ||
+            "";
+
+
+        if (partnerLogoUrl(partner)) {
+
+            document.getElementById(
+                "partnerLogoPreview"
+            ).src =
+                partnerLogoUrl(partner);
+
+
+            document.getElementById(
+                "partnerLogoPreviewContainer"
+            ).style.display =
+                "block";
+
+        }
+
+    }
+
+    else {
+
+        document.getElementById(
+            "partnerModalTitle"
+        ).textContent =
+            "Add Partner";
+
+
+        document.getElementById(
+            "partnerDisplayOrder"
+        ).value =
+            nextPartnerDisplayOrder();
+
+    }
+
+
+    document.getElementById(
+        "partnerModal"
+    ).classList.add(
+        "open"
+    );
+
+}
+
+
+async function savePartner(
+    event
+) {
+
+    event.preventDefault();
+
+
+    try {
+
+        const file =
+            document.getElementById(
+                "partnerLogo"
+            ).files[0];
+
+
+        let logoUrl =
+            null;
+
+
+        if (editingPartnerId) {
+
+            const old =
+                partners.find(
+                    item =>
+                        item.id ===
+                        editingPartnerId
+                );
+
+
+            logoUrl =
+                old?.logo_url ||
+                null;
+
+        }
+
+
+        if (file) {
+
+            logoUrl =
+                await uploadImage(
+                    file,
+                    STORAGE_FOLDERS.partner
+                );
+
+        }
+
+
+        const payload = {
+
+            name:
+                document.getElementById(
+                    "partnerName"
+                ).value.trim(),
+
+            website_url:
+                document.getElementById(
+                    "partnerWebsite"
+                ).value.trim() ||
+                null,
+
+            is_active:
+                document.getElementById(
+                    "partnerStatus"
+                ).value ===
+                "active",
+
+            display_order:
+                normalizeDisplayOrder(
+                    document.getElementById(
+                        "partnerDisplayOrder"
+                    ).value,
+                    nextPartnerDisplayOrder()
+                ),
+
+            logo_url:
+                logoUrl
+
+        };
+
+
+        let result;
+
+
+        if (editingPartnerId) {
+
+            result =
+                await supabaseClient
+                    .from(
+                        "partners"
+                    )
+                    .update(
+                        payload
+                    )
+                    .eq(
+                        "id",
+                        requireRecordId(editingPartnerId)
+                    );
+
+        }
+
+        else {
+
+            result =
+                await supabaseClient
+                    .from(
+                        "partners"
+                    )
+                    .insert([
+                        payload
+                    ]);
+
+        }
+
+
+        if (result.error) {
+            throw result.error;
+        }
+
+
+        await logAudit(
+            "partners",
+            editingPartnerId,
+            editingPartnerId
+                ? "update"
+                : "insert",
+            {
+                name:
+                    payload.name,
+                is_active:
+                    payload.is_active
+            }
+        );
+
+
+        closeModal(
+            "partnerModal"
+        );
+
+
+        showToast(
+            editingPartnerId
+                ? "Partner updated."
+                : "Partner added.",
+            "success"
+        );
+
+
+        await loadPartners();
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        showToast(
+            error.message,
+            "error"
+        );
+
+    }
+
+}
+
+
+function editPartner(id) {
+
+    openPartnerModal(id);
+
+}
+
+
+async function deletePartner(
+    id
+) {
+
+    const recordId =
+        requireRecordId(id);
+
+
+    if (
+        !confirm(
+            "Delete this partner?"
+        )
+    ) {
+        return;
+    }
+
+
+    try {
+
+        const {
+            error
+        } =
+            await supabaseClient
+                .from(
+                    "partners"
+                )
+                .delete()
+                .eq(
+                    "id",
+                    recordId
+                );
+
+
+        if (error) {
+            throw error;
+        }
+
+
+        await logAudit(
+            "partners",
+            recordId,
+            "delete"
+        );
+
+
+        showToast(
+            "Partner deleted.",
+            "success"
+        );
+
+
+        await loadPartners();
+
+    }
+
+    catch (error) {
+
+        showToast(
+            error.message,
+            "error"
+        );
+
+    }
+
+}
+
+
+/* ==========================================================
    CONTACT MESSAGES
 ========================================================== */
 
@@ -3670,6 +4245,9 @@ function showSection(
         leaders:
             "Leaders",
 
+        partners:
+            "Partners",
+
         messages:
             "Inbox",
 
@@ -3731,6 +4309,16 @@ function setupForms() {
         .addEventListener(
             "submit",
             saveLeader
+        );
+
+
+    document
+        .getElementById(
+            "partnerForm"
+        )
+        .addEventListener(
+            "submit",
+            savePartner
         );
 
 
@@ -3835,6 +4423,22 @@ function setupSearch() {
             }
         );
 
+
+    document
+        .getElementById(
+            "partnerSearch"
+        )
+        .addEventListener(
+            "input",
+            event => {
+
+                renderPartnersTable(
+                    event.target.value
+                );
+
+            }
+        );
+
 }
 
 
@@ -3862,6 +4466,13 @@ function setupImagePreviews() {
         "leaderImage",
         "leaderImagePreview",
         "leaderImagePreviewContainer"
+    );
+
+
+    setupPreview(
+        "partnerLogo",
+        "partnerLogoPreview",
+        "partnerLogoPreviewContainer"
     );
 
 
@@ -4299,6 +4910,10 @@ window.openLeaderModal =
     openLeaderModal;
 
 
+window.openPartnerModal =
+    openPartnerModal;
+
+
 window.editBlog =
     editBlog;
 
@@ -4325,6 +4940,14 @@ window.moveLeader =
 
 window.deleteLeader =
     deleteLeader;
+
+
+window.editPartner =
+    editPartner;
+
+
+window.deletePartner =
+    deletePartner;
 
 
 window.updateMessageStatus =
@@ -4586,6 +5209,17 @@ function leaderImageUrl(
 }
 
 
+function partnerLogoUrl(
+    partner
+) {
+
+    return partner?.resolved_partner_logo_url ||
+        partner?.logo_url ||
+        "";
+
+}
+
+
 async function resolveEventImage(
     event
 ) {
@@ -4610,6 +5244,21 @@ async function resolveLeaderImage(
         resolved_leader_image_url:
             await resolveStorageImageUrl(
                 leader?.image_url
+            )
+    };
+
+}
+
+
+async function resolvePartnerLogo(
+    partner
+) {
+
+    return {
+        ...partner,
+        resolved_partner_logo_url:
+            await resolveStorageImageUrl(
+                partner?.logo_url
             )
     };
 
@@ -4690,7 +5339,8 @@ function storagePathFromImageUrl(
         value.startsWith("blogs/") ||
         value.startsWith("site/") ||
         value.startsWith("events/") ||
-        value.startsWith("leaders/")
+            value.startsWith("leaders/") ||
+            value.startsWith("partners/")
     ) {
         return value;
     }
@@ -4772,6 +5422,28 @@ function leaderStatusLabel(
 }
 
 
+function partnerStatusValue(
+    partner
+) {
+
+    return partner?.is_active === false
+        ? "inactive"
+        : "active";
+
+}
+
+
+function partnerStatusLabel(
+    partner
+) {
+
+    return partnerStatusValue(partner) === "active"
+        ? "active"
+        : "inactive";
+
+}
+
+
 function orderedLeaders(
     list
 ) {
@@ -4786,6 +5458,48 @@ function orderedLeaders(
 
             const secondOrder =
                 leaderDisplayOrderValue(
+                    second
+                );
+
+
+            if (
+                firstOrder !==
+                secondOrder
+            ) {
+                return firstOrder -
+                    secondOrder;
+            }
+
+
+            return new Date(
+                second.created_at ||
+                0
+            ).getTime() -
+                new Date(
+                    first.created_at ||
+                    0
+                ).getTime();
+
+        }
+    );
+
+}
+
+
+function orderedPartners(
+    list
+) {
+
+    return [...list].sort(
+        (first, second) => {
+
+            const firstOrder =
+                partnerDisplayOrderValue(
+                    first
+                );
+
+            const secondOrder =
+                partnerDisplayOrderValue(
                     second
                 );
 
@@ -4832,6 +5546,24 @@ function leaderDisplayOrderValue(
 }
 
 
+function partnerDisplayOrderValue(
+    partner
+) {
+
+    const order =
+        Number.parseInt(
+            partner?.display_order,
+            10
+        );
+
+
+    return Number.isFinite(order)
+        ? order
+        : Number.MAX_SAFE_INTEGER;
+
+}
+
+
 function nextLeaderDisplayOrder() {
 
     const orders =
@@ -4840,6 +5572,34 @@ function nextLeaderDisplayOrder() {
                 leader =>
                     Number.parseInt(
                         leader.display_order,
+                        10
+                    )
+            )
+            .filter(
+                Number.isFinite
+            );
+
+
+    if (!orders.length) {
+        return 10;
+    }
+
+
+    return Math.max(
+        ...orders
+    ) + 10;
+
+}
+
+
+function nextPartnerDisplayOrder() {
+
+    const orders =
+        partners
+            .map(
+                partner =>
+                    Number.parseInt(
+                        partner.display_order,
                         10
                     )
             )

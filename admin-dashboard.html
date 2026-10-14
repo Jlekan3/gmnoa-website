@@ -134,6 +134,18 @@
             </button>
 
 
+            <button
+                class="nav-item"
+                data-section="partners"
+            >
+
+                <i data-lucide="handshake"></i>
+
+                Partners
+
+            </button>
+
+
             <div class="nav-label">
                 Website
             </div>
@@ -826,6 +838,85 @@
 
                             <h4>
                                 Loading leaders
+                            </h4>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ======================================
+                 PARTNERS
+            ======================================= -->
+
+            <section
+                class="section"
+                id="section-partners"
+            >
+
+                <div class="page-header">
+
+                    <div>
+
+                        <h2>
+                            Partners
+                        </h2>
+
+                        <p>
+                            Manage partner logos and links displayed on the homepage.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        class="btn btn-primary"
+                        onclick="openPartnerModal()"
+                    >
+
+                        <i data-lucide="plus"></i>
+
+                        Add Partner
+
+                    </button>
+
+                </div>
+
+
+                <div class="toolbar">
+
+                    <div class="search-box">
+
+                        <i data-lucide="search"></i>
+
+                        <input
+                            type="search"
+                            id="partnerSearch"
+                            placeholder="Search partners..."
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div
+                        class="table-wrap"
+                        id="partnersTable"
+                    >
+
+                        <div class="empty">
+
+                            <i data-lucide="handshake"></i>
+
+                            <h4>
+                                Loading partners
                             </h4>
 
                         </div>
@@ -1944,6 +2035,178 @@
                         class="btn btn-primary"
                     >
                         Save Leader
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ==========================================
+     PARTNER MODAL
+=========================================== -->
+
+<div
+    class="modal"
+    id="partnerModal"
+>
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <h3 id="partnerModalTitle">
+                Add Partner
+            </h3>
+
+            <button
+                class="close-modal"
+                onclick="closeModal('partnerModal')"
+            >
+
+                <i data-lucide="x"></i>
+
+            </button>
+
+        </div>
+
+
+        <div class="modal-body">
+
+            <form id="partnerForm">
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>
+                            Partner Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="partnerName"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Website Link
+                        </label>
+
+                        <input
+                            type="url"
+                            id="partnerWebsite"
+                            placeholder="https://example.com"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Status
+                        </label>
+
+                        <select id="partnerStatus">
+
+                            <option value="active">
+                                Active
+                            </option>
+
+                            <option value="inactive">
+                                Inactive
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Display Order
+                        </label>
+
+                        <input
+                            type="number"
+                            id="partnerDisplayOrder"
+                            min="1"
+                            step="1"
+                            placeholder="1"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group full">
+
+                        <label>
+                            Partner Logo
+                        </label>
+
+                        <div class="file-upload">
+
+                            <i data-lucide="image"></i>
+
+                            <p>
+                                Upload the partner logo.
+                            </p>
+
+                            <input
+                                type="file"
+                                id="partnerLogo"
+                                accept="image/jpeg,image/png,image/webp,image/svg+xml"
+                            >
+
+                        </div>
+
+
+                        <div
+                            class="image-preview"
+                            id="partnerLogoPreviewContainer"
+                        >
+
+                            <img
+                                id="partnerLogoPreview"
+                                src=""
+                                alt="Partner logo preview"
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-actions">
+
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        onclick="closeModal('partnerModal')"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                    >
+                        Save Partner
                     </button>
 
                 </div>

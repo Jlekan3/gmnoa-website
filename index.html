@@ -1829,6 +1829,177 @@
 
 
         /* =========================================================
+           PARTNERS
+        ========================================================= */
+
+        .partners {
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    white 0,
+                    var(--light-blue-2) 100%
+                );
+        }
+
+        .partners-heading {
+            display: grid;
+
+            grid-template-columns: minmax(0, 1.15fr) minmax(260px, .85fr);
+
+            align-items: end;
+
+            gap: 32px;
+
+            margin-bottom: 40px;
+        }
+
+        .partners-marquee {
+            position: relative;
+
+            width: 100%;
+
+            overflow: hidden;
+
+            padding: 10px 0 18px;
+        }
+
+        .partners-marquee::before,
+        .partners-marquee::after {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+
+            bottom: 0;
+
+            z-index: 2;
+
+            width: min(18vw, 190px);
+
+            pointer-events: none;
+        }
+
+        .partners-marquee::before {
+            left: 0;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--light-blue-2),
+                    rgba(247,251,255,0)
+                );
+        }
+
+        .partners-marquee::after {
+            right: 0;
+
+            background:
+                linear-gradient(
+                    270deg,
+                    var(--light-blue-2),
+                    rgba(247,251,255,0)
+                );
+        }
+
+        .partners-track {
+            display: flex;
+
+            width: max-content;
+
+            gap: 18px;
+
+            padding-left: 18px;
+
+            animation:
+                partnerMarquee 32s linear infinite;
+        }
+
+        .partners-marquee:hover .partners-track {
+            animation-play-state: paused;
+        }
+
+        .partner-card {
+            width: 260px;
+
+            min-height: 112px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 16px;
+
+            padding: 18px;
+
+            border: 1px solid var(--border);
+
+            border-radius: var(--radius-md);
+
+            background: white;
+
+            box-shadow: var(--shadow-sm);
+        }
+
+        .partner-card img,
+        .partner-logo-fallback {
+            width: 72px;
+
+            height: 72px;
+
+            flex: 0 0 auto;
+
+            border-radius: 14px;
+
+            border: 1px solid var(--border);
+
+            background: var(--light-blue);
+
+            object-fit: contain;
+        }
+
+        .partner-logo-fallback {
+            display: grid;
+
+            place-items: center;
+
+            color: var(--blue);
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: 18px;
+
+            font-weight: 800;
+        }
+
+        .partner-card span {
+            color: var(--navy);
+
+            font-family: "Manrope", sans-serif;
+
+            font-size: 16px;
+
+            font-weight: 800;
+
+            line-height: 1.25;
+        }
+
+        @keyframes partnerMarquee {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+
+        /* =========================================================
            CONTACT
         ========================================================= */
 
@@ -2263,6 +2434,12 @@
                 min-height: 450px;
             }
 
+            .partners-heading {
+                grid-template-columns: 1fr;
+
+                align-items: start;
+            }
+
             .contact-grid {
                 grid-template-columns: 1fr;
 
@@ -2357,6 +2534,21 @@
 
             .join-action {
                 margin-top: 30px;
+            }
+
+            .partner-card {
+                width: 220px;
+            }
+
+            .partner-card img,
+            .partner-logo-fallback {
+                width: 60px;
+
+                height: 60px;
+            }
+
+            .partner-card span {
+                font-size: 14px;
             }
 
             .form-grid {
@@ -2545,6 +2737,8 @@
 
             <a href="#mentorship">Mentorship</a>
 
+            <a href="#partners">Partners</a>
+
             <a href="#contact">Contact Us</a>
 
         </nav>
@@ -2620,6 +2814,8 @@
         <a href="#join">Join Us</a>
 
         <a href="#mentorship">Mentorship</a>
+
+        <a href="#partners">Partners</a>
 
         <a href="#contact">Contact Us</a>
 
@@ -3506,6 +3702,64 @@
 
 
 <!-- =========================================================
+     PARTNERS
+========================================================= -->
+
+<section class="section partners" id="partners">
+
+    <div class="container">
+
+        <div class="partners-heading reveal">
+
+            <div>
+
+                <div class="eyebrow">
+                    Partners
+                </div>
+
+                <h2 class="section-title">
+                    Working with institutions that move maritime progress forward.
+                </h2>
+
+            </div>
+
+            <p class="section-description">
+                Our partners and collaborators support the association's mission,
+                member welfare, professional development and industry connection.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="partners-marquee reveal" aria-label="GMNOA partners">
+
+        <div class="partners-track" id="partnersTrack">
+
+            <article class="partner-card">
+                <div class="partner-logo-fallback">GMNOA</div>
+                <span>Partner updates coming soon</span>
+            </article>
+
+            <article class="partner-card">
+                <div class="partner-logo-fallback">GH</div>
+                <span>Maritime collaboration</span>
+            </article>
+
+            <article class="partner-card">
+                <div class="partner-logo-fallback">SEA</div>
+                <span>Professional network</span>
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
      CONTACT
 ========================================================= -->
 
@@ -3800,6 +4054,8 @@
 
                     <a href="#mentorship">Mentorship</a>
 
+                    <a href="#partners">Partners</a>
+
                     <a href="#contact">Contact Us</a>
 
                 </div>
@@ -3943,7 +4199,9 @@
         blog:
             "https://images.unsplash.com/photo-1494412651409-8963ce7935a7?auto=format&fit=crop&w=1000&q=85",
         event:
-            "https://images.unsplash.com/photo-1494412651409-8963ce7935a7?auto=format&fit=crop&w=1200&q=85"
+            "https://images.unsplash.com/photo-1494412651409-8963ce7935a7?auto=format&fit=crop&w=1200&q=85",
+        partner:
+            ""
     };
 
     const STORAGE_BUCKET =
@@ -4139,13 +4397,15 @@
             settingsResult,
             leadersResult,
             postsResult,
-            eventsResult
+            eventsResult,
+            partnersResult
         ] =
             await Promise.allSettled([
                 loadSiteSettings(),
                 loadTeamMembers(),
                 loadBlogPosts(),
-                loadEvents()
+                loadEvents(),
+                loadPartners()
             ]);
 
 
@@ -4153,6 +4413,7 @@
         renderIfFulfilled(leadersResult);
         renderIfFulfilled(postsResult);
         renderIfFulfilled(eventsResult);
+        renderIfFulfilled(partnersResult);
 
     }
 
@@ -4335,6 +4596,50 @@
     }
 
 
+    async function loadPartners() {
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+                .from("partners")
+                .select("name, website_url, logo_url, display_order, is_active")
+                .eq("is_active", true)
+                .order("display_order", {
+                    ascending: true
+                })
+                .order("created_at", {
+                    ascending: false
+                });
+
+
+        if (error) {
+            throw error;
+        }
+
+
+        if (!data?.length) {
+            return;
+        }
+
+
+        const partners =
+            await Promise.all(
+                data.map(resolvePartnerLogo)
+            );
+
+
+        const cards =
+            partners.map(renderPartnerCard).join("");
+
+
+        document.getElementById("partnersTrack").innerHTML =
+            cards + cards;
+
+    }
+
+
     function renderLeaderCard(leader) {
 
         return `
@@ -4366,6 +4671,89 @@
         return leader.resolved_leader_image_url ||
             leader.image_url ||
             FALLBACK_IMAGES.leader;
+
+    }
+
+
+    function renderPartnerCard(partner) {
+
+        const content = `
+            ${
+                partnerLogoUrl(partner)
+                    ? `<img
+                        src="${escapeHTML(partnerLogoUrl(partner))}"
+                        alt="${escapeHTML(partner.name || "GMNOA partner")}"
+                    >`
+                    : `<div class="partner-logo-fallback">
+                        ${escapeHTML(partnerInitials(partner.name))}
+                    </div>`
+            }
+            <span>${escapeHTML(partner.name || "GMNOA Partner")}</span>
+        `;
+
+
+        if (safeHref(partner.website_url, "")) {
+
+            return `
+                <a
+                    class="partner-card"
+                    href="${escapeHTML(safeHref(partner.website_url, "#partners"))}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    ${content}
+                </a>
+            `;
+
+        }
+
+
+        return `
+            <article class="partner-card">
+                ${content}
+            </article>
+        `;
+
+    }
+
+
+    function partnerLogoUrl(partner) {
+
+        return partner.resolved_partner_logo_url ||
+            partner.logo_url ||
+            FALLBACK_IMAGES.partner;
+
+    }
+
+
+    function partnerInitials(name) {
+
+        const words =
+            String(name || "Partner")
+                .trim()
+                .split(/\s+/)
+                .slice(0, 2);
+
+
+        return words
+            .map(word => word.charAt(0))
+            .join("")
+            .toUpperCase() ||
+            "P";
+
+    }
+
+
+    async function resolvePartnerLogo(partner) {
+
+        return {
+            ...partner,
+            resolved_partner_logo_url:
+                await resolveStorageImageUrl(
+                    partner.logo_url,
+                    FALLBACK_IMAGES.partner
+                )
+        };
 
     }
 
@@ -4499,7 +4887,8 @@
             value.startsWith("blogs/") ||
             value.startsWith("site/") ||
             value.startsWith("events/") ||
-            value.startsWith("leaders/")
+            value.startsWith("leaders/") ||
+            value.startsWith("partners/")
         ) {
             return value;
         }

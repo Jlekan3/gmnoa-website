@@ -54,6 +54,31 @@ const DASHBOARD_ROLES = [
 ];
 
 
+const INACTIVITY_TIMEOUT_STORAGE_KEY =
+    "gmnoaAdminInactivityTimeoutMinutes";
+
+
+const DEFAULT_INACTIVITY_TIMEOUT_MINUTES =
+    30;
+
+
+const MIN_INACTIVITY_TIMEOUT_MINUTES =
+    1;
+
+
+const MAX_INACTIVITY_TIMEOUT_MINUTES =
+    480;
+
+
+const INACTIVITY_EVENTS = [
+    "click",
+    "keydown",
+    "mousemove",
+    "scroll",
+    "touchstart"
+];
+
+
 /* ==========================================================
    STATE
 ========================================================== */
@@ -75,6 +100,10 @@ let editingBlogId = null;
 let editingEventId = null;
 
 let editingLeaderId = null;
+
+let inactivityTimerId = null;
+
+let inactivityTrackingStarted = false;
 
 
 /* ==========================================================
@@ -164,6 +193,8 @@ async function checkAuthentication() {
         updateUserInterface();
 
         await loadEverything();
+
+        startInactivityTracking();
 
     }
 
@@ -260,6 +291,9 @@ function updateUserInterface() {
         name
             .charAt(0)
             .toUpperCase();
+
+
+    syncInactivityTimeoutInput();
 
 }
 
@@ -3719,6 +3753,16 @@ function setupForms() {
             saveJoinUs
         );
 
+
+    document
+        .getElementById(
+            "saveInactivityTimeoutBtn"
+        )
+        .addEventListener(
+            "click",
+            saveInactivityTimeout
+        );
+
 }
 
 
@@ -3973,6 +4017,8 @@ async function logout() {
 
     try {
 
+        stopInactivityTracking();
+
         const {
             error
         } =
@@ -3997,6 +4043,221 @@ async function logout() {
             error.message,
             "error"
         );
+
+    }
+
+}
+
+
+/* ==========================================================
+   INACTIVITY LOGOUT
+========================================================== */
+
+function getInactivityTimeoutMinutes() {
+
+    const savedValue =
+        Number.parseInt(
+            localStorage.getItem(
+                INACTIVITY_TIMEOUT_STORAGE_KEY
+            ),
+            10
+        );
+
+
+    if (
+        Number.isFinite(savedValue) &&
+        savedValue >= MIN_INACTIVITY_TIMEOUT_MINUTES &&
+        savedValue <= MAX_INACTIVITY_TIMEOUT_MINUTES
+    ) {
+        return savedValue;
+    }
+
+
+    return DEFAULT_INACTIVITY_TIMEOUT_MINUTES;
+
+}
+
+
+function syncInactivityTimeoutInput() {
+
+    const input =
+        document.getElementById(
+            "inactivityTimeoutMinutes"
+        );
+
+
+    if (!input) {
+        return;
+    }
+
+
+    input.value =
+        getInactivityTimeoutMinutes();
+
+}
+
+
+function saveInactivityTimeout() {
+
+    const input =
+        document.getElementById(
+            "inactivityTimeoutMinutes"
+        );
+
+
+    const minutes =
+        Number.parseInt(
+            input.value,
+            10
+        );
+
+
+    if (
+        !Number.isFinite(minutes) ||
+        minutes < MIN_INACTIVITY_TIMEOUT_MINUTES ||
+        minutes > MAX_INACTIVITY_TIMEOUT_MINUTES
+    ) {
+
+        input.value =
+            getInactivityTimeoutMinutes();
+
+        showToast(
+            `Enter a timeout between ${MIN_INACTIVITY_TIMEOUT_MINUTES} and ${MAX_INACTIVITY_TIMEOUT_MINUTES} minutes.`,
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    localStorage.setItem(
+        INACTIVITY_TIMEOUT_STORAGE_KEY,
+        String(minutes)
+    );
+
+
+    resetInactivityTimer();
+
+    showToast(
+        `Auto logout set to ${minutes} minute${minutes === 1 ? "" : "s"}.`,
+        "success"
+    );
+
+}
+
+
+function startInactivityTracking() {
+
+    if (!inactivityTrackingStarted) {
+
+        INACTIVITY_EVENTS.forEach(
+            eventName => {
+
+                window.addEventListener(
+                    eventName,
+                    resetInactivityTimer,
+                    {
+                        passive:
+                            true
+                    }
+                );
+
+            }
+        );
+
+        inactivityTrackingStarted =
+            true;
+
+    }
+
+
+    resetInactivityTimer();
+
+}
+
+
+function stopInactivityTracking() {
+
+    if (inactivityTimerId) {
+
+        window.clearTimeout(
+            inactivityTimerId
+        );
+
+        inactivityTimerId =
+            null;
+
+    }
+
+
+    if (!inactivityTrackingStarted) {
+        return;
+    }
+
+
+    INACTIVITY_EVENTS.forEach(
+        eventName => {
+
+            window.removeEventListener(
+                eventName,
+                resetInactivityTimer
+            );
+
+        }
+    );
+
+
+    inactivityTrackingStarted =
+        false;
+
+}
+
+
+function resetInactivityTimer() {
+
+    if (!currentUser) {
+        return;
+    }
+
+
+    if (inactivityTimerId) {
+
+        window.clearTimeout(
+            inactivityTimerId
+        );
+
+    }
+
+
+    inactivityTimerId =
+        window.setTimeout(
+            logoutDueToInactivity,
+            getInactivityTimeoutMinutes() *
+                60 *
+                1000
+        );
+
+}
+
+
+async function logoutDueToInactivity() {
+
+    stopInactivityTracking();
+
+
+    try {
+
+        await supabaseClient
+            .auth
+            .signOut();
+
+    }
+
+    finally {
+
+        window.location.href =
+            "admin-login.html";
 
     }
 
@@ -4873,6 +5134,8 @@ supabaseClient
                 event ===
                 "SIGNED_OUT"
             ) {
+
+                stopInactivityTracking();
 
                 window.location.href =
                     "admin-login.html";

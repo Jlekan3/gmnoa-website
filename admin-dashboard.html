@@ -1213,6 +1213,86 @@
                         <div>
 
                             <h3>
+                                Security
+                            </h3>
+
+                            <p>
+                                Automatically sign out inactive administrators.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="card-body">
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+
+                                <label>
+                                    Auto logout after
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="inactivityTimeoutMinutes"
+                                    min="1"
+                                    max="480"
+                                    step="1"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    Unit
+                                </label>
+
+                                <input
+                                    type="text"
+                                    value="Minutes of inactivity"
+                                    readonly
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-actions">
+
+                            <button
+                                class="btn btn-primary"
+                                id="saveInactivityTimeoutBtn"
+                            >
+
+                                <i data-lucide="shield-check"></i>
+
+                                Save Timeout
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <br>
+
+
+                <div class="card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h3>
                                 Database
                             </h3>
 

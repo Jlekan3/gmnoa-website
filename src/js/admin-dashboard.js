@@ -2599,7 +2599,13 @@ function renderMessagesTable(
                 ${filtered.map(
                     message => `
 
-                    <tr>
+                    <tr
+                        class="message-row"
+                        tabindex="0"
+                        role="button"
+                        onclick="openMessageModal('${inlineHandlerArg(message.id)}')"
+                        onkeydown="handleMessageRowKey(event, '${inlineHandlerArg(message.id)}')"
+                    >
 
                         <td>
                             <div class="table-title">
@@ -2633,21 +2639,24 @@ function renderMessagesTable(
 
                                 <button
                                     class="btn btn-secondary btn-sm"
-                                    onclick="updateMessageStatus('${inlineHandlerArg(message.id)}', 'read')"
+                                    onclick="openMessageModal('${inlineHandlerArg(message.id)}'); event.stopPropagation();"
+                                    aria-label="Read message from ${inlineHandlerArg(message.full_name || "Unknown")}"
                                 >
-                                    <i data-lucide="mail-open"></i>
+                                    <i data-lucide="eye"></i>
                                 </button>
 
                                 <button
                                     class="btn btn-secondary btn-sm"
-                                    onclick="updateMessageStatus('${inlineHandlerArg(message.id)}', 'archived')"
+                                    onclick="updateMessageStatus('${inlineHandlerArg(message.id)}', 'archived'); event.stopPropagation();"
+                                    aria-label="Archive message from ${inlineHandlerArg(message.full_name || "Unknown")}"
                                 >
                                     <i data-lucide="archive"></i>
                                 </button>
 
                                 <button
                                     class="btn btn-danger btn-sm"
-                                    onclick="deleteMessage('${inlineHandlerArg(message.id)}')"
+                                    onclick="deleteMessage('${inlineHandlerArg(message.id)}'); event.stopPropagation();"
+                                    aria-label="Delete message from ${inlineHandlerArg(message.full_name || "Unknown")}"
                                 >
                                     <i data-lucide="trash-2"></i>
                                 </button>
@@ -2672,9 +2681,177 @@ function renderMessagesTable(
 }
 
 
+function handleMessageRowKey(
+    event,
+    id
+) {
+
+    if (
+        event.key !== "Enter" &&
+        event.key !== " "
+    ) {
+        return;
+    }
+
+
+    event.preventDefault();
+
+    openMessageModal(
+        id
+    );
+
+}
+
+
+async function openMessageModal(
+    id
+) {
+
+    const recordId =
+        requireRecordId(id);
+
+
+    const message =
+        contactMessages.find(
+            item =>
+                String(item.id) ===
+                String(recordId)
+        );
+
+
+    if (!message) {
+
+        showToast(
+            "Message not found.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    document
+        .getElementById(
+            "messageModalTitle"
+        )
+        .textContent =
+            message.subject ||
+            "General enquiry";
+
+
+    document
+        .getElementById(
+            "messageModalBody"
+        )
+        .innerHTML =
+            renderMessageDetail(
+                message
+            );
+
+
+    document
+        .getElementById(
+            "messageModal"
+        )
+        .classList.add(
+            "open"
+        );
+
+
+    lucide.createIcons();
+
+
+    if (
+        String(message.status || "unread")
+            .toLowerCase() ===
+        "unread"
+    ) {
+
+        await updateMessageStatus(
+            recordId,
+            "read",
+            {
+                silent:
+                    true
+            }
+        );
+
+    }
+
+}
+
+
+function renderMessageDetail(
+    message
+) {
+
+    return `
+
+        <div class="message-detail">
+
+            <div class="message-detail-grid">
+
+                <div>
+                    <span>From</span>
+                    <strong>${escapeHTML(message.full_name || "Unknown")}</strong>
+                </div>
+
+                <div>
+                    <span>Email</span>
+                    <a href="mailto:${escapeHTML(message.email || "")}">
+                        ${escapeHTML(message.email || "No email provided")}
+                    </a>
+                </div>
+
+                <div>
+                    <span>Status</span>
+                    <strong>${escapeHTML(message.status || "unread")}</strong>
+                </div>
+
+                <div>
+                    <span>Received</span>
+                    <strong>${formatDate(message.created_at)}</strong>
+                </div>
+
+            </div>
+
+            <div class="message-detail-content">
+                ${escapeHTML(message.message || "No message provided.")}
+            </div>
+
+            <div class="form-actions">
+
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    onclick="updateMessageStatus('${inlineHandlerArg(message.id)}', 'archived')"
+                >
+                    <i data-lucide="archive"></i>
+                    Archive
+                </button>
+
+                <a
+                    class="btn btn-primary"
+                    href="mailto:${escapeHTML(message.email || "")}?subject=${encodeURIComponent(`Re: ${message.subject || "GMNOA enquiry"}`)}"
+                >
+                    <i data-lucide="reply"></i>
+                    Reply
+                </a>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
 async function updateMessageStatus(
     id,
-    status
+    status,
+    options = {}
 ) {
 
     const recordId =
@@ -2723,10 +2900,14 @@ async function updateMessageStatus(
 
         await loadContactMessages();
 
-        showToast(
-            "Message updated.",
-            "success"
-        );
+        if (!options.silent) {
+
+            showToast(
+                "Message updated.",
+                "success"
+            );
+
+        }
 
     }
 
@@ -3887,6 +4068,14 @@ window.deleteLeader =
 
 window.updateMessageStatus =
     updateMessageStatus;
+
+
+window.openMessageModal =
+    openMessageModal;
+
+
+window.handleMessageRowKey =
+    handleMessageRowKey;
 
 
 window.deleteMessage =

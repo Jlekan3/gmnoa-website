@@ -1027,6 +1027,67 @@
         }
 
 
+        /* PILLARS, VALUES & MOTTO */
+        .association-principles {
+            padding: 64px 0 80px;
+            background: var(--light-blue-2);
+            border-top: 1px solid var(--border);
+        }
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+        }
+        .principle-card {
+            min-width: 0;
+            padding: 32px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-top: 3px solid var(--blue);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+        }
+        .principle-label {
+            margin-bottom: 12px;
+            color: var(--blue-dark);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
+        .principle-card h2 {
+            color: var(--navy);
+            font-family: "Manrope", sans-serif;
+            font-size: 25px;
+            font-weight: 800;
+            line-height: 1.25;
+            letter-spacing: -.035em;
+        }
+        .principle-list {
+            margin-top: 24px;
+            padding: 24px 0 0 20px;
+            border-top: 1px solid var(--border);
+        }
+        .principle-list li {
+            padding-left: 6px;
+            color: var(--text);
+            font-size: 15px;
+            line-height: 1.7;
+            overflow-wrap: anywhere;
+        }
+        .principle-list li + li { margin-top: 14px; }
+        .principle-list li::marker { color: var(--blue-dark); }
+        .principle-list strong { color: var(--blue-dark); }
+        @media (max-width: 950px) {
+            .principles-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 700px) {
+            .association-principles { padding: 40px 0 56px; }
+            .principle-card { padding: 26px; }
+            .principles-grid { gap: 18px; }
+        }
+
+
         /* =========================================================
            MISSION
         ========================================================= */
@@ -1706,7 +1767,7 @@
             overflow: hidden;
 
             background:
-                url("https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=85")
+                url("/assets/images/mentorshippic.jpeg")
                 center / cover;
         }
 
@@ -1833,169 +1894,108 @@
         ========================================================= */
 
         .partners {
-            position: relative;
-
-            overflow: hidden;
-
-            background:
-                linear-gradient(
-                    180deg,
-                    white 0,
-                    var(--light-blue-2) 100%
-                );
+            background: var(--light-blue-2);
+            border-top: 1px solid var(--border);
         }
-
         .partners-heading {
             display: grid;
-
-            grid-template-columns: minmax(0, 1.15fr) minmax(260px, .85fr);
-
+            grid-template-columns: 1.15fr .85fr;
             align-items: end;
-
             gap: 32px;
-
             margin-bottom: 40px;
         }
-
-        .partners-marquee {
-            position: relative;
-
-            width: 100%;
-
-            overflow: hidden;
-
-            padding: 10px 0 18px;
+        .partners .section-description {
+            margin-top: 0;
+            line-height: 1.75;
         }
-
-        .partners-marquee::before,
-        .partners-marquee::after {
-            content: "";
-
-            position: absolute;
-
-            top: 0;
-
-            bottom: 0;
-
-            z-index: 2;
-
-            width: min(18vw, 190px);
-
-            pointer-events: none;
-        }
-
-        .partners-marquee::before {
-            left: 0;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    var(--light-blue-2),
-                    rgba(247,251,255,0)
-                );
-        }
-
-        .partners-marquee::after {
-            right: 0;
-
-            background:
-                linear-gradient(
-                    270deg,
-                    var(--light-blue-2),
-                    rgba(247,251,255,0)
-                );
-        }
-
-        .partners-track {
-            display: flex;
-
-            width: max-content;
-
-            gap: 18px;
-
-            padding-left: 18px;
-
-            animation:
-                partnerMarquee 32s linear infinite;
-        }
-
-        .partners-marquee:hover .partners-track {
-            animation-play-state: paused;
-        }
-
-        .partner-card {
-            width: 260px;
-
-            min-height: 112px;
-
-            display: flex;
-
-            align-items: center;
-
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(6, minmax(0, 1fr));
             gap: 16px;
-
-            padding: 18px;
-
+            padding-top: 28px;
+            border-top: 1px solid var(--border);
+        }
+        .partner-card {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 0;
+            aspect-ratio: 1 / 1;
+            padding: 0;
+            overflow: hidden;
+            background: var(--white);
             border: 1px solid var(--border);
-
-            border-radius: var(--radius-md);
-
-            background: white;
-
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+        }
+        a.partner-card:hover,
+        a.partner-card:focus-visible {
+            border-color: var(--blue-dark);
+            box-shadow: var(--shadow-sm);
+            transform: translateY(-3px);
+        }
+        .partner-card:focus-visible, .partners-toggle:focus-visible {
+            outline: 3px solid var(--blue);
+            outline-offset: 4px;
+        }
+        .partner-card img {
+            position: absolute;
+            inset: 0;
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .partner-name-fallback {
+            padding: 16px;
+            color: var(--blue-dark);
+            font-family: "Manrope", sans-serif;
+            font-size: 18px;
+            font-weight: 800;
+            line-height: 1.3;
+            text-align: center;
+            overflow-wrap: anywhere;
+        }
+        .partner-card[hidden] { display: none; }
+        .partners-message {
+            grid-column: 1 / -1;
+            margin: 0;
+            padding: 48px 24px;
+            color: var(--text);
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            text-align: center;
+        }
+        .partners-actions {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            margin-top: 32px;
+        }
+        .partners-toggle {
+            min-height: 52px;
+            padding: 0 30px;
+            background: var(--blue-dark);
+            color: var(--white);
+            border: 1px solid transparent;
+            border-radius: var(--radius-sm);
+            transition: background-color .2s ease, box-shadow .2s ease;
+        }
+        .partners-toggle:hover:not(:disabled) {
+            background: var(--navy-2);
             box-shadow: var(--shadow-sm);
         }
+        .partners-toggle:disabled { opacity: .55; cursor: default; }
+        .partners-count { color: var(--text); font-size: 13px; }
+        .partners-count:empty { display: none; }
 
-        .partner-card img,
-        .partner-logo-fallback {
-            width: 72px;
-
-            height: 72px;
-
-            flex: 0 0 auto;
-
-            border-radius: 14px;
-
-            border: 1px solid var(--border);
-
-            background: var(--light-blue);
-
-            object-fit: contain;
-        }
-
-        .partner-logo-fallback {
-            display: grid;
-
-            place-items: center;
-
-            color: var(--blue);
-
-            font-family: "Manrope", sans-serif;
-
-            font-size: 18px;
-
-            font-weight: 800;
-        }
-
-        .partner-card span {
-            color: var(--navy);
-
-            font-family: "Manrope", sans-serif;
-
-            font-size: 16px;
-
-            font-weight: 800;
-
-            line-height: 1.25;
-        }
-
-        @keyframes partnerMarquee {
-            from {
-                transform: translateX(0);
-            }
-
-            to {
-                transform: translateX(-50%);
-            }
+        @media (prefers-reduced-motion: reduce) {
+            .partner-card, .partners-toggle { transition: none; }
+            a.partner-card:hover, a.partner-card:focus-visible { transform: none; }
         }
 
 
@@ -2257,6 +2257,24 @@
             color: white;
         }
 
+        .footer-values {
+            padding: 0 0 28px;
+            text-align: center;
+            font-family: "Manrope", sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: .08em;
+            line-height: 2;
+            text-wrap: balance;
+        }
+
+        .footer-values strong {
+            display: block;
+            margin-top: 6px;
+            color: var(--blue);
+            letter-spacing: .16em;
+        }
+
         .footer-bottom {
             display: flex;
 
@@ -2434,6 +2452,10 @@
                 min-height: 450px;
             }
 
+            .partners-grid {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+            }
+
             .partners-heading {
                 grid-template-columns: 1fr;
 
@@ -2536,20 +2558,12 @@
                 margin-top: 30px;
             }
 
-            .partner-card {
-                width: 220px;
+            .partners-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 12px;
+                padding-top: 20px;
             }
-
-            .partner-card img,
-            .partner-logo-fallback {
-                width: 60px;
-
-                height: 60px;
-            }
-
-            .partner-card span {
-                font-size: 14px;
-            }
+            .partners-heading { gap: 20px; margin-bottom: 28px; }
 
             .form-grid {
                 grid-template-columns: 1fr;
@@ -3016,6 +3030,46 @@
 
     </div>
 
+</section>
+
+
+<!-- PILLARS, VALUES & MOTTO -->
+<section class="association-principles" aria-label="Our pillars, values and motto">
+    <div class="container principles-grid">
+        <section class="principle-card reveal" aria-labelledby="pillarsTitle">
+            <div class="principle-label">Our foundation</div>
+            <h2 id="pillarsTitle">Our Strategic Pillars</h2>
+            <ul class="principle-list">
+                <li>Our Welfare</li>
+                <li>Our Education</li>
+                <li>Our Association</li>
+                <li>Our Communities</li>
+            </ul>
+        </section>
+
+        <section class="principle-card reveal" aria-labelledby="valuesTitle">
+            <div class="principle-label">H.O.T.E.L.</div>
+            <h2 id="valuesTitle">Our Core Values</h2>
+            <ul class="principle-list">
+                <li><strong>H</strong> &mdash; Honesty</li>
+                <li><strong>O</strong> &mdash; Oneness</li>
+                <li><strong>T</strong> &mdash; Transparency</li>
+                <li><strong>E</strong> &mdash; Excellence</li>
+                <li><strong>L</strong> &mdash; Leadership</li>
+            </ul>
+        </section>
+
+        <section class="principle-card reveal" aria-labelledby="mottoTitle">
+            <div class="principle-label">Our shared commitment</div>
+            <h2 id="mottoTitle">Our Motto</h2>
+            <ul class="principle-list">
+                <li>Brother's Keeper, Sister's Anchor.</li>
+                <li>Your safety is my safety.</li>
+                <li>My safety is your safety.</li>
+                <li>Your safety is our safety.</li>
+            </ul>
+        </section>
+    </div>
 </section>
 
 
@@ -3713,12 +3767,8 @@
 
             <div>
 
-                <div class="eyebrow">
-                    Partners
-                </div>
-
-                <h2 class="section-title">
-                    Working with institutions that move maritime progress forward.
+                <h2 class="section-title" id="partnersTitle">
+                    Partnerships
                 </h2>
 
             </div>
@@ -3730,30 +3780,17 @@
 
         </div>
 
-    </div>
-
-
-    <div class="partners-marquee reveal" aria-label="GMNOA partners">
-
-        <div class="partners-track" id="partnersTrack">
-
-            <article class="partner-card">
-                <div class="partner-logo-fallback">GMNOA</div>
-                <span>Partner updates coming soon</span>
-            </article>
-
-            <article class="partner-card">
-                <div class="partner-logo-fallback">GH</div>
-                <span>Maritime collaboration</span>
-            </article>
-
-            <article class="partner-card">
-                <div class="partner-logo-fallback">SEA</div>
-                <span>Professional network</span>
-            </article>
-
+        <div class="partners-grid" id="partnersGrid" aria-labelledby="partnersTitle" aria-busy="true">
+            <p class="partners-message" role="status">Loading partners…</p>
         </div>
 
+        <div class="partners-actions">
+            <button class="btn partners-toggle" id="viewAllPartners" type="button"
+                aria-controls="partnersGrid" aria-expanded="false" disabled>
+                View all partners
+            </button>
+            <p class="partners-count" id="partnersCount" role="status" aria-live="polite"></p>
+        </div>
     </div>
 
 </section>
@@ -4127,6 +4164,11 @@
         </div>
 
 
+        <div class="footer-values">
+            <p>HONESTY &nbsp;|&nbsp; ONENESS &nbsp;|&nbsp; TRANSPARENCY &nbsp;|&nbsp; EXCELLENCE &nbsp;|&nbsp; LEADERSHIP</p>
+            <strong>(HOTEL)</strong>
+        </div>
+
         <div class="footer-bottom">
 
             <span>
@@ -4388,6 +4430,29 @@
        PUBLIC DATABASE CONTENT
     ========================================================= */
 
+    const partnersGrid = document.getElementById("partnersGrid");
+    const partnersToggle = document.getElementById("viewAllPartners");
+    const partnersCount = document.getElementById("partnersCount");
+    const PARTNERS_PREVIEW_LIMIT = 12;
+
+    partnersToggle.addEventListener("click", () => {
+        updatePartnersView(partnersToggle.getAttribute("aria-expanded") !== "true");
+    });
+
+    function updatePartnersView(expanded = false) {
+        const cards = Array.from(partnersGrid.querySelectorAll(".partner-card"));
+        cards.forEach((card, index) => {
+            card.hidden = !expanded && index >= PARTNERS_PREVIEW_LIMIT;
+        });
+        partnersToggle.setAttribute("aria-expanded", String(expanded));
+        partnersToggle.textContent = expanded ? "View fewer partners" : "View all partners";
+        partnersCount.textContent = cards.length
+            ? expanded || cards.length <= PARTNERS_PREVIEW_LIMIT
+                ? `Showing all ${cards.length} partners`
+                : `Showing ${PARTNERS_PREVIEW_LIMIT} of ${cards.length} partners`
+            : "";
+    }
+
     loadPublicContent();
 
 
@@ -4597,46 +4662,38 @@
 
 
     async function loadPartners() {
-
-        const {
-            data,
-            error
-        } =
-            await supabaseClient
+        try {
+            const { data, error } = await supabaseClient
                 .from("partners")
                 .select("name, website_url, logo_url, display_order, is_active")
                 .eq("is_active", true)
-                .order("display_order", {
-                    ascending: true
-                })
-                .order("created_at", {
-                    ascending: false
-                });
-
-
-        if (error) {
+                .order("display_order", { ascending: true })
+                .order("created_at", { ascending: false });
+            if (error) throw error;
+            if (!data?.length) {
+                partnersGrid.innerHTML = '<p class="partners-message" role="status">Partner updates coming soon.</p>';
+                return;
+            }
+            const partners = await Promise.all(data.map(resolvePartnerLogo));
+            partnersGrid.innerHTML = partners.map(renderPartnerCard).join("");
+            partnersGrid.querySelectorAll("img").forEach(img => {
+                const showName = () => {
+                    const name = document.createElement("span");
+                    name.className = "partner-name-fallback";
+                    name.textContent = img.alt;
+                    img.replaceWith(name);
+                };
+                img.addEventListener("error", showName, { once: true });
+                if (img.complete && !img.naturalWidth) showName();
+            });
+            partnersToggle.disabled = false;
+            updatePartnersView();
+        } catch (error) {
+            partnersGrid.innerHTML = '<p class="partners-message" role="status">Partners are temporarily unavailable. Please check back soon.</p>';
             throw error;
+        } finally {
+            partnersGrid.setAttribute("aria-busy", "false");
         }
-
-
-        if (!data?.length) {
-            return;
-        }
-
-
-        const partners =
-            await Promise.all(
-                data.map(resolvePartnerLogo)
-            );
-
-
-        const cards =
-            partners.map(renderPartnerCard).join("");
-
-
-        document.getElementById("partnersTrack").innerHTML =
-            cards + cards;
-
     }
 
 
@@ -4684,11 +4741,10 @@
                         src="${escapeHTML(partnerLogoUrl(partner))}"
                         alt="${escapeHTML(partner.name || "GMNOA partner")}"
                     >`
-                    : `<div class="partner-logo-fallback">
-                        ${escapeHTML(partnerInitials(partner.name))}
-                    </div>`
+                    : `<span class="partner-name-fallback">
+                        ${escapeHTML(partner.name || "GMNOA Partner")}
+                    </span>`
             }
-            <span>${escapeHTML(partner.name || "GMNOA Partner")}</span>
         `;
 
 
@@ -4722,24 +4778,6 @@
         return partner.resolved_partner_logo_url ||
             partner.logo_url ||
             FALLBACK_IMAGES.partner;
-
-    }
-
-
-    function partnerInitials(name) {
-
-        const words =
-            String(name || "Partner")
-                .trim()
-                .split(/\s+/)
-                .slice(0, 2);
-
-
-        return words
-            .map(word => word.charAt(0))
-            .join("")
-            .toUpperCase() ||
-            "P";
 
     }
 

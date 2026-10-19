@@ -26,6 +26,7 @@ export default defineConfig({
                 leadership: resolve(__dirname, "leadership.html"),
                 events: resolve(__dirname, "events.html"),
                 blog: resolve(__dirname, "blog.html"),
+                partners: resolve(__dirname, "partners.html"),
                 adminLogin: resolve(__dirname, "admin-login.html"),
                 adminDashboard: resolve(__dirname, "admin-dashboard.html")
             }

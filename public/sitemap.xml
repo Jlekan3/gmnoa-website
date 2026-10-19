@@ -16,4 +16,8 @@
         <loc>https://gmnoa.org/events.html</loc>
         <priority>0.7</priority>
     </url>
+    <url>
+        <loc>https://gmnoa.org/partners.html</loc>
+        <priority>0.7</priority>
+    </url>
 </urlset>
